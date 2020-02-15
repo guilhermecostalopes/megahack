@@ -16,8 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import br.com.megahack.AutenticacaoException;
 import br.com.megahack.Mensagem;
+import br.com.megahack.exception.AutenticacaoException;
 import lombok.extern.apachecommons.CommonsLog;
 
 @Component

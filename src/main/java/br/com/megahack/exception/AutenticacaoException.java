@@ -1,7 +1,8 @@
-package br.com.megahack;
+package br.com.megahack.exception;
 
 import java.util.Collection;
 
+import br.com.megahack.Mensagem;
 import lombok.Getter;
 import lombok.Setter;
 
