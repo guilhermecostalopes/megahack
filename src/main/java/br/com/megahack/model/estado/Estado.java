@@ -15,6 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import br.com.megahack.model.regiao.Regiao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +40,9 @@ import lombok.Setter;
 		@UniqueConstraint(columnNames = { "FK_REGIAO", "DES_NOME" }, name = "U1_TAB_ESTADO") }, indexes = {
 				@Index(columnList = "DES_NOME", name = "I1_TAB_ESTADO"),
 				@Index(columnList = "FK_REGIAO", name = "I2_TAB_ESTADO") })
-public class Estado {
+public class Estado extends Principal {
+
+	private static final long serialVersionUID = 2171117338489269835L;
 
 	@Id
 	@Column(name = "PK_ESTADO")

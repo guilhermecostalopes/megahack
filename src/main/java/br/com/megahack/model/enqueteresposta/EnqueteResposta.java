@@ -15,6 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import br.com.megahack.model.enquete.Enquete;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +40,9 @@ import lombok.Setter;
 		"DES_RESPOSTA" }, name = "U1_TAB_ENQUETE_RESPOSTA") }, indexes = {
 				@Index(columnList = "FK_ENQUETE", name = "I1_TAB_ENQUETE_RESPOSTA"),
 				@Index(columnList = "FK_ENQUETE", name = "I2_TAB_ENQUETE_RESPOSTA") })
-public class EnqueteResposta {
+public class EnqueteResposta extends Principal {
+
+	private static final long serialVersionUID = -7065932387242033763L;
 
 	@Id
 	@Column(name = "PK_ENQUETE_RESPOSTA")

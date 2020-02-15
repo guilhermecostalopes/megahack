@@ -15,6 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import br.com.megahack.model.regiao.Regiao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,7 +41,9 @@ import lombok.Setter;
 				@Index(columnList = "DS_NOME", name = "I1_TAB_EMISSORA"),
 				@Index(columnList = "DS_CANAL", name = "I2_TAB_EMISSORA"),
 				@Index(columnList = "FK_REGIAO", name = "I3_TAB_EMISSORA") })
-public class Emissora {
+public class Emissora extends Principal {
+
+	private static final long serialVersionUID = -7183853745450794435L;
 
 	@Id
 	@Column(name = "PK_EMISSORA")

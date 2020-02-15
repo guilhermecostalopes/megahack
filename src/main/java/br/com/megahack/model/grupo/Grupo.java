@@ -12,6 +12,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,7 +35,9 @@ import lombok.Setter;
 @Table(name = "TAB_GRUPO", uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "DS_NOME" }, name = "U1_TAB_GRUPO") }, indexes = {
 				@Index(columnList = "DS_NOME", name = "I1_TAB_GRUPO") })
-public class Grupo {
+public class Grupo extends Principal {
+
+	private static final long serialVersionUID = 3050889805256653056L;
 
 	@Id
 	@Column(name = "PK_GRUPO")

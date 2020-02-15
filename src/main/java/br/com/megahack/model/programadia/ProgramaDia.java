@@ -21,6 +21,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import br.com.megahack.model.enuns.DiaSemanaEnum;
 import br.com.megahack.model.programa.Programa;
 import br.com.megahack.model.regiao.Regiao;
@@ -48,7 +49,9 @@ import lombok.Setter;
 				@Index(columnList = "FK_PROGRAMACAO", name = "I1_TAB_PROGRAMACAO_DIA"),
 				@Index(columnList = "FK_REGIAO", name = "I2_TAB_PROGRAMACAO_DIA"),
 				@Index(columnList = "ST_DIA_SEMANA", name = "I3_TAB_PROGRAMACAO_DIA") })
-public class ProgramaDia {
+public class ProgramaDia extends Principal {
+
+	private static final long serialVersionUID = 4891550842842182834L;
 
 	@Id
 	@Column(name = "PK_PROGRAMACAO_DIA")

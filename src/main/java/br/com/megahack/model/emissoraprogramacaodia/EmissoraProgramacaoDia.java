@@ -15,6 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.ghsistemas.principal.core.modelo.Principal;
 import br.com.megahack.model.emissora.Emissora;
 import br.com.megahack.model.programadia.ProgramaDia;
 import lombok.AllArgsConstructor;
@@ -40,7 +41,9 @@ import lombok.Setter;
 		"FK_PROGRAMACAO_DIA", "FK_EMISSORA" }, name = "U1_TAB_EMISSORA_PROGRAMACAO_DIA") }, indexes = {
 				@Index(columnList = "FK_PROGRAMACAO_DIA", name = "I1_TAB_EMISSORA_PROGRAMACAO"),
 				@Index(columnList = "FK_EMISSORA", name = "I2_TAB_EMISSORA_PROGRAMACAO") })
-public class EmissoraProgramacaoDia {
+public class EmissoraProgramacaoDia extends Principal {
+
+	private static final long serialVersionUID = 4520686928694750042L;
 
 	@Id
 	@Column(name = "PK_EMISSORA_PROGRAMACAO_DIA")
@@ -53,5 +56,4 @@ public class EmissoraProgramacaoDia {
 	@ManyToOne(targetEntity = Emissora.class)
 	@JoinColumn(name = "FK_EMISSORA", nullable = false, foreignKey = @ForeignKey(name = "FOR_EMISSORA"))
 	private Emissora emissora;
-
 }
