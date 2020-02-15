@@ -8,13 +8,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AutenticacaoException extends RuntimeException {
+public class UsuarioException extends RuntimeException {
 
-	private static final long serialVersionUID = -2388532433015097185L;
+	private static final long serialVersionUID = 48243678275118344L;
 
 	private Collection<Mensagem> mensagens;
 
-	public AutenticacaoException(Collection<Mensagem> mensagens) {
+	public UsuarioException(Collection<Mensagem> mensagens) {
 		super();
 		this.mensagens = mensagens;
 	}

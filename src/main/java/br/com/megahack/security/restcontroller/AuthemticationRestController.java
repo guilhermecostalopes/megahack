@@ -1,6 +1,6 @@
 package br.com.megahack.security.restcontroller;
 
-import static br.com.megahack.TipoMensagemEnum.SUCCESS;
+import static br.com.ghsistemas.principal.utilitario.mensagem.TipoMensagemEnum.SUCCESS;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.megahack.Mensagem;
+import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import br.com.megahack.model.usuario.Usuario;
 import br.com.megahack.model.usuario.UsuarioConsultaService;
 import br.com.megahack.model.usuariogrupo.UsuarioGrupo;

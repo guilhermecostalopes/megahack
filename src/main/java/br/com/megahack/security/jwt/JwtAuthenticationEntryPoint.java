@@ -1,6 +1,6 @@
 package br.com.megahack.security.jwt;
 
-import static br.com.megahack.TipoMensagemEnum.ERROR;
+import static br.com.ghsistemas.principal.utilitario.mensagem.TipoMensagemEnum.ERROR;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import br.com.megahack.Mensagem;
+import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import br.com.megahack.exception.AutenticacaoException;
 import lombok.extern.apachecommons.CommonsLog;
 

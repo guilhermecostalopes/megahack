@@ -88,6 +88,27 @@
 			<artifactId>jjwt</artifactId>
 			<version>${jjwt.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.ghsistemas.principal</groupId>
+			<artifactId>utilitario</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.ghsistemas.principal</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.ghsistemas.principal</groupId>
+			<artifactId>rest</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

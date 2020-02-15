@@ -4,7 +4,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 import java.util.Collection;
 
-import br.com.megahack.Mensagem;
+import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
