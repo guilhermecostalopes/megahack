@@ -1,17 +1,27 @@
 package br.com.megahack.model.usuario;
 
+import static javax.persistence.CascadeType.DETACH;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REFRESH;
 import static lombok.AccessLevel.PROTECTED;
+
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.com.megahack.model.pessoa.Pessoa;
+import br.com.megahack.model.usuariogrupo.UsuarioGrupo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,6 +56,12 @@ public class Usuario {
 	private String login;
 	@Column(name = "DS_SENHA", nullable = false, length = 300)
 	private String senha;
-	@Column(name = "IM_AVATAR", nullable = false, length = 300)
+	@Column(name = "IM_AVATAR", nullable = false)
 	private byte[] avatar;
+	// Quando salvar um usuário deve ter no minimo um grupo
+	@OneToMany(mappedBy = "usuario", targetEntity = UsuarioGrupo.class, cascade = { PERSIST, MERGE, REFRESH, DETACH })
+	private Collection<UsuarioGrupo> usuariosGrupos;
+	// Quando salvar um usuário deve ter no minimo uma pessoa e somente uma
+	@OneToOne(mappedBy = "usuario", targetEntity = Pessoa.class, cascade = { PERSIST, MERGE, REFRESH, DETACH })
+	private Pessoa pessoa;
 }

@@ -55,7 +55,7 @@ public class Pessoa {
 	@JoinColumn(name = "FK_USUARIO", nullable = false, foreignKey = @ForeignKey(name = "FOR_USUARIO"))
 	private Usuario usuario;
 	@Column(name = "DS_NOME", nullable = false, length = 100)
-	private String login;
+	private String nome;
 	@Column(name = "DS_SOBRENOME", nullable = false, length = 300)
 	private String senha;
 	@Temporal(DATE)
