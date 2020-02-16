@@ -1,4 +1,4 @@
-package br.com.megahack.core.usuario.resource;
+package br.com.megahack.core.cidade.resource;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -14,18 +14,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class UsuarioResource extends PrincipalEnvioResource {
+public class CidadeResource extends PrincipalEnvioResource {
 
-	// usuário
-	private String id;
-	private String login;
-	private String senha;
-	private byte[] avatar;
-	// Pessoa
+	private String estado;
 	private String nome;
-	private String sobreNome;
-	private String dataAniversario;
-	private String cidade;
-	// Grupo
-	private String grupo;
 }

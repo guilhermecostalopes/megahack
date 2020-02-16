@@ -1,4 +1,4 @@
-package br.com.megahack.core.usuario.pessoa;
+package br.com.megahack.core.pessoa;
 
 import static javax.persistence.TemporalType.DATE;
 import static lombok.AccessLevel.PROTECTED;
@@ -57,7 +57,7 @@ public class Pessoa {
 	@Column(name = "DS_NOME", nullable = false, length = 100)
 	private String nome;
 	@Column(name = "DS_SOBRENOME", nullable = false, length = 300)
-	private String senha;
+	private String sobreNome;
 	@Temporal(DATE)
 	@Column(name = "DT_DATA_ANIVERSARIO", nullable = false)
 	private Date dataAniversario;

@@ -20,7 +20,7 @@ import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import br.com.megahack.core.usuario.pessoa.Pessoa;
+import br.com.megahack.core.pessoa.Pessoa;
 import br.com.megahack.core.usuariogrupo.UsuarioGrupo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
