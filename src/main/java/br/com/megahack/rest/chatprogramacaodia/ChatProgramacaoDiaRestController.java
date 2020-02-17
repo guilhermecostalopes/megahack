@@ -9,6 +9,6 @@ import lombok.extern.apachecommons.CommonsLog;
 @CommonsLog
 @RestController
 @RequestMapping("/chatProgramacaoDias")
-public class ChatProgramacaoDiaController extends MegaHackController {
+public class ChatProgramacaoDiaRestController extends MegaHackController {
 
 }
