@@ -10,4 +10,6 @@ interface EstadoRepository extends CrudRepository<Estado, String> {
 
 	Estado findByNome(String nome);
 
+	Estado findByAbreviacao(String abreviacao);
+
 }

@@ -38,7 +38,8 @@ import lombok.Setter;
 @Table(name = "TAB_ESTADO", uniqueConstraints = {
 		@UniqueConstraint(columnNames = { "FK_REGIAO", "DES_NOME" }, name = "U1_TAB_ESTADO") }, indexes = {
 				@Index(columnList = "DES_NOME", name = "I1_TAB_ESTADO"),
-				@Index(columnList = "FK_REGIAO", name = "I2_TAB_ESTADO") })
+				@Index(columnList = "FK_REGIAO", name = "I2_TAB_ESTADO"),
+				@Index(columnList = "DES_ABREVIACAO", name = "I3_TAB_ESTADO") })
 public class Estado {
 
 	@Id
@@ -51,4 +52,6 @@ public class Estado {
 	private Regiao regiao;
 	@Column(name = "DES_NOME", nullable = false, length = 300)
 	private String nome;
+	@Column(name = "DES_ABREVIACAO", nullable = false, length = 2)
+	private String abreviacao;
 }

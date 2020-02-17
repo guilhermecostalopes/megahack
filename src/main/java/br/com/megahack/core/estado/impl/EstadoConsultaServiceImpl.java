@@ -16,4 +16,9 @@ public class EstadoConsultaServiceImpl implements EstadoConsultaService {
 	public Estado buscarPorNome(String nome) {
 		return repository.findByNome(nome);
 	}
+
+	@Override
+	public Estado buscarPorAbreviacao(String abreviacao) {
+		return repository.findByAbreviacao(abreviacao);
+	}
 }

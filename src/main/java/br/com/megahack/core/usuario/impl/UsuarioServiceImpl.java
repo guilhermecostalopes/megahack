@@ -31,6 +31,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		Cidade cidade = cidadeConsultaService.buscarPorNome(resource.getCidade());
 		Pessoa pessoa = Pessoa.builder().nome(resource.getNome()).sobreNome(resource.getSobreNome()).cidade(cidade).dataAniversario(new Date()).build();
+		pessoa.setUsuario(usuario);
 		usuario.setPessoa(pessoa);
 		
 		usuario = repository.save(usuario);

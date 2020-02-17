@@ -20,7 +20,8 @@ public class EstadoServiceImpl implements EstadoService {
 	@Override
 	public EstadoResource incluir(EstadoResource resource) {
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
-		Estado entidade = repository.save(Estado.builder().nome(resource.getNome()).regiao(regiao).build());
+		Estado entidade = repository.save(
+				Estado.builder().nome(resource.getNome()).regiao(regiao).abreviacao(resource.getAbreviacao()).build());
 		alterarResource(resource, entidade);
 		return resource;
 	}

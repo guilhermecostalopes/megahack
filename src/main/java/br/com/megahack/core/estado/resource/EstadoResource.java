@@ -18,4 +18,5 @@ public class EstadoResource extends PrincipalEnvioResource {
 
 	private String regiao;
 	private String nome;
+	private String abreviacao;
 }
