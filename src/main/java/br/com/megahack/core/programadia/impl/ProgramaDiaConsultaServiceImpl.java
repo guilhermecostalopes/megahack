@@ -6,10 +6,10 @@ import java.util.GregorianCalendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
 import br.com.megahack.core.enuns.DiaSemanaEnum;
 import br.com.megahack.core.programa.Programa;
 import br.com.megahack.core.programa.ProgramaConsultaService;
+import br.com.megahack.core.programa.resource.ProgramaResource;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.regiao.Regiao;
@@ -26,8 +26,7 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 	private RegiaoConsultaService regiaoConsultaService;
 
 	@Override
-	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(
-			ChatProgramacaoDiaResource resource) {
+	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaResource resource) {
 		Programa programa = programaConsultaService.buscarPorNome(resource.getPrograma());
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
 		DiaSemanaEnum diaSemana = DiaSemanaEnum.buscaTipoEnum(resource.getDiaSemana());

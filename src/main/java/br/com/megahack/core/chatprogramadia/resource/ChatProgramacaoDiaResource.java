@@ -3,6 +3,7 @@ package br.com.megahack.core.chatprogramadia.resource;
 import static lombok.AccessLevel.PRIVATE;
 
 import br.com.ghsistemas.principal.core.resorce.PrincipalEnvioResource;
+import br.com.megahack.core.programa.resource.ProgramaResource;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,15 +19,5 @@ public class ChatProgramacaoDiaResource extends PrincipalEnvioResource {
 
 	private String usuario;
 	private String texto;
-	// para saber a programção do dia
-	private String programa;
-	private String regiao;
-	// Deve ter os mesmos nomes do enum DiaSemanaEnum
-	private String diaSemana;
-	// Deve vir no formato DD/MM/YYYY
-	private String data;
-	// Deve vir no formato HH:MM:SS
-	private String horaInicio;
-	// Deve vir no formato HH:MM:SS
-	private String horaFim;
+	private ProgramaResource programaResource;
 }
