@@ -15,7 +15,7 @@ import br.com.megahack.core.usuario.Usuario;
 import br.com.megahack.core.usuario.UsuarioConsultaService;
 
 @Service
-public class ChatProgramacaoDiaImpl implements ChatProgramacaoDiaService {
+public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService {
 
 	@Autowired
 	private ChatProgramacaoDiaRepository repository;
