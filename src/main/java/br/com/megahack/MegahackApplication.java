@@ -17,6 +17,8 @@ import br.com.megahack.core.estado.Estado;
 import br.com.megahack.core.estado.EstadoConsultaService;
 import br.com.megahack.core.estado.EstadoService;
 import br.com.megahack.core.estado.resource.EstadoResource;
+import br.com.megahack.core.grupo.GrupoService;
+import br.com.megahack.core.grupo.resource.GrupoResource;
 import br.com.megahack.core.regiao.Regiao;
 import br.com.megahack.core.regiao.RegiaoConsultaService;
 import br.com.megahack.core.regiao.RegiaoService;
@@ -38,8 +40,9 @@ public class MegahackApplication {
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
 			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService,
 			RegiaoConsultaService regiaoConsultaService, EstadoConsultaService estadoConsultaService,
-			CidadeConsultaService cidadeConsultaService) {
+			CidadeConsultaService cidadeConsultaService, GrupoService grupoService) {
 		return args -> {
+			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
 			Regiao regiao = regiaoConsultaService.buscarPorNome("Sudeste");
 			incluirEstado(regiao, service);
@@ -56,7 +59,7 @@ public class MegahackApplication {
 			byte[] avatarMasculino = imageToByte("/avatar/avatar_masculino.jfif");
 			usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarMasculino).build());
+					.avatar(avatarMasculino).grupo("Administrador").build());
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 		}
@@ -72,5 +75,9 @@ public class MegahackApplication {
 
 	private void incluirCidade(Estado estado, CidadeService cidadeService) {
 		cidadeService.incluir(CidadeResource.builder().nome("Belo Horizonte").estado("Minas Gerais").build());
+	}
+
+	private void incluirGrupo(GrupoService grupoService) {
+		grupoService.incluir(GrupoResource.builder().nome("Administrador").role("ROLE_ADMINISTRADOR").build());
 	}
 }
