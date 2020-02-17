@@ -65,6 +65,9 @@ public class ProgramaDia {
 	@Column(name = "ST_DIA_SEMANA", nullable = false, length = 20)
 	private DiaSemanaEnum diaSemana;
 	@Temporal(TIME)
+	@Column(name = "DT_DATA", nullable = false)
+	private Date data;
+	@Temporal(TIME)
 	@Column(name = "HR_INICIO", nullable = false)
 	private Date horaInicio;
 	@Temporal(TIME)
