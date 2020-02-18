@@ -2,7 +2,6 @@ package br.com.megahack.core.chatprogramadia.resource;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.com.ghsistemas.principal.core.resorce.PrincipalEnvioResource;
 import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class ChatProgramacaoDiaResource extends PrincipalEnvioResource {
+public class ChatProgramacaoDiaResource {
 
 	private String usuario;
 	private String texto;

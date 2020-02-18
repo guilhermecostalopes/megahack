@@ -4,7 +4,6 @@ import static lombok.AccessLevel.PRIVATE;
 
 import java.util.Collection;
 
-import br.com.ghsistemas.principal.core.resorce.PrincipalEnvioResource;
 import br.com.megahack.core.enqueteresposta.resource.EnqueteRespostaResource;
 import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import lombok.AllArgsConstructor;
@@ -18,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class EnqueteResource extends PrincipalEnvioResource {
+public class EnqueteResource {
 
 	private ProgramaDiaResource programaDiaResource;
 	private String pergunta;

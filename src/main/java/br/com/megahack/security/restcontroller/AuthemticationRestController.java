@@ -1,7 +1,5 @@
 package br.com.megahack.security.restcontroller;
 
-import static br.com.ghsistemas.principal.utilitario.mensagem.TipoMensagemEnum.SUCCESS;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import br.com.megahack.core.usuario.Usuario;
 import br.com.megahack.core.usuario.UsuarioConsultaService;
 import br.com.megahack.core.usuariogrupo.UsuarioGrupo;
@@ -55,8 +52,7 @@ public class AuthemticationRestController {
 		Collection<String> autorizacoes = new ArrayList<>();
 		retornaAutorizacoesUsuarios(usuario.getUsuariosGrupos(), autorizacoes);
 		return ResponseEntity.ok(CurrrentUser.builder().token(token).login(usuario.getLogin())
-				.autorizacoes(autorizacoes).nome(usuario.getPessoa().getNome())
-				.mensagem(new Mensagem(SUCCESS, "usuario-logado-com-sucesso", "Usuário logado com sucesso !")).build());
+				.autorizacoes(autorizacoes).nome(usuario.getPessoa().getNome()).build());
 	}
 
 	@PostMapping(value = "/api/auth/refresh")

@@ -2,7 +2,6 @@ package br.com.megahack.exception;
 
 import java.util.Collection;
 
-import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +11,9 @@ public class AutenticacaoException extends RuntimeException {
 
 	private static final long serialVersionUID = -2388532433015097185L;
 
-	private Collection<Mensagem> mensagens;
+	private Collection<String> mensagens;
 
-	public AutenticacaoException(Collection<Mensagem> mensagens) {
+	public AutenticacaoException(Collection<String> mensagens) {
 		super();
 		this.mensagens = mensagens;
 	}

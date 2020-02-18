@@ -4,7 +4,6 @@ import static lombok.AccessLevel.PROTECTED;
 
 import java.util.Collection;
 
-import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,5 +21,4 @@ public class CurrrentUser {
 	private String login;
 	private String nome;
 	private Collection<String> autorizacoes;
-	private Mensagem mensagem;
 }

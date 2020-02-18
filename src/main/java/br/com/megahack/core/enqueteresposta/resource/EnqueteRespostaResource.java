@@ -2,7 +2,6 @@ package br.com.megahack.core.enqueteresposta.resource;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.com.ghsistemas.principal.core.resorce.PrincipalEnvioResource;
 import br.com.megahack.core.enquete.Enquete;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class EnqueteRespostaResource extends PrincipalEnvioResource {
+public class EnqueteRespostaResource {
 
 	private Enquete enquete;
 	private String resposta;

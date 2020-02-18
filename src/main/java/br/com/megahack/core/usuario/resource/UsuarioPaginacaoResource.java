@@ -4,7 +4,6 @@ import static lombok.AccessLevel.PRIVATE;
 
 import java.util.Collection;
 
-import br.com.ghsistemas.principal.core.resorce.PaginacaoRetornoResource;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +18,4 @@ import lombok.Setter;
 public class UsuarioPaginacaoResource {
 
 	private Collection<UsuarioListaResource> lista;
-	private PaginacaoRetornoResource page;
 }
