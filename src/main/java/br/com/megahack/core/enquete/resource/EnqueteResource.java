@@ -20,6 +20,7 @@ import lombok.Setter;
 public class EnqueteResource {
 
 	private String codPrograma;
+	private String codigo;
 	private ProgramaDiaResource programaDiaResource;
 	private String pergunta;
 	// Deve vir no formato DD/MM/YYYY_HH:MM:SS

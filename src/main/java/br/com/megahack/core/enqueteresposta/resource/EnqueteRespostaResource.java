@@ -17,6 +17,7 @@ import lombok.Setter;
 public class EnqueteRespostaResource {
 
 	private Enquete enquete;
+	private String codigo;
 	private String resposta;
 	private Integer votacaoFavor;
 	private Integer votacaoContra;

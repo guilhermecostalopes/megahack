@@ -66,45 +66,34 @@ public class MegahackApplication {
 	}
 
 	private void incluirChat(ChatProgramacaoDiaService chatProgramacaoDiaService) {
-		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
-				.codPrograma("001")
-				.texto("Tudo bem Fátima Bernades ?")
-				.usuario("85655497042")
-				.programaResource(programaDiaResource())
-				.build());
-		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
-				.codPrograma("001")
-				.texto("O programa de hoje está ótimo ... Parabéns ...")
-				.usuario("85655497041")
-				.programaResource(programaDiaResource())
-				.build());
-		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
-				.codPrograma("001")
-				.texto("Esepero que amanhã continue os mesmos artistas ...")
-				.usuario("85655497043")
-				.programaResource(programaDiaResource())
-				.build());
-		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
-				.codPrograma("001")
-				.texto("Como sabe fazer um ótimo programa, essa Fátima Bernades")
-				.usuario("85655497044")
-				.programaResource(programaDiaResource())
-				.build());
+		chatProgramacaoDiaService
+				.incluir(ChatProgramacaoDiaResource.builder().codPrograma("001").texto("Tudo bem Fátima Bernades ?")
+						.usuario("85655497042").programaResource(programaDiaResource()).build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder().codPrograma("001")
+				.texto("O programa de hoje está ótimo ... Parabéns ...").usuario("85655497041")
+				.programaResource(programaDiaResource()).build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder().codPrograma("001")
+				.texto("Esepero que amanhã continue os mesmos artistas ...").usuario("85655497043")
+				.programaResource(programaDiaResource()).build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder().codPrograma("001")
+				.texto("Como sabe fazer um ótimo programa, essa Fátima Bernades").usuario("85655497044")
+				.programaResource(programaDiaResource()).build());
 	}
 
 	private void incluirEnquete(EnqueteService enqueteService, String codPrograma) {
 		Collection<EnqueteRespostaResource> respostas = new ArrayList<>();
 		incluirEnqueteResposta(respostas);
-		enqueteService.incluir(EnqueteResource.builder().codPrograma(codPrograma).dataHoraFim("20/01/2020_10:30:00")
-				.dataHoraInicio("20/01/2020_11:30:00").pergunta("O que está achando do programa de hoje ?")
-				.programaDiaResource(programaDiaResource()).respostas(respostas).build());
+		enqueteService.incluir(
+				EnqueteResource.builder().codigo("001").codPrograma(codPrograma).dataHoraFim("20/01/2020_10:30:00")
+						.dataHoraInicio("20/01/2020_11:30:00").pergunta("O que está achando do programa de hoje ?")
+						.programaDiaResource(programaDiaResource()).respostas(respostas).build());
 	}
 
 	private void incluirEnqueteResposta(Collection<EnqueteRespostaResource> respostas) {
-		respostas.add(EnqueteRespostaResource.builder().resposta("Ótimo").build());
-		respostas.add(EnqueteRespostaResource.builder().resposta("Bom").build());
-		respostas.add(EnqueteRespostaResource.builder().resposta("Ruim").build());
-		respostas.add(EnqueteRespostaResource.builder().resposta("Péssimo").build());
+		respostas.add(EnqueteRespostaResource.builder().codigo("001").resposta("Ótimo").build());
+		respostas.add(EnqueteRespostaResource.builder().codigo("002").resposta("Bom").build());
+		respostas.add(EnqueteRespostaResource.builder().codigo("003").resposta("Ruim").build());
+		respostas.add(EnqueteRespostaResource.builder().codigo("004").resposta("Péssimo").build());
 	}
 
 	private void incluirProgramaDia(ProgramaDiaService programaDiaService) {
@@ -127,15 +116,15 @@ public class MegahackApplication {
 			usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
 					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
-			
+
 			usuarioService.incluir(UsuarioResource.builder().login("85655497041").senha("y|e8HTcAJ9").nome("João")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
 					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
-			
+
 			usuarioService.incluir(UsuarioResource.builder().login("85655497043").senha("y|e8HTcAJ9").nome("Helena")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
 					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());
-			
+
 			usuarioService.incluir(UsuarioResource.builder().login("85655497044").senha("y|e8HTcAJ9").nome("Maria")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
 					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());

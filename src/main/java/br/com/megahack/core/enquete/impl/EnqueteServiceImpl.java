@@ -50,8 +50,9 @@ public class EnqueteServiceImpl implements EnqueteService {
 		calendarInicio.set(Integer.parseInt(dtIniSplit[2]), Integer.parseInt(dtIniSplit[1]),
 				Integer.parseInt(dtIniSplit[0]), Integer.parseInt(hrIniSplit[0]), Integer.parseInt(hrIniSplit[1]),
 				Integer.parseInt(hrIniSplit[2]));
-		Enquete entidade = Enquete.builder().dataHoraFim(calendarFim.getTime()).dataHoraInicio(calendarInicio.getTime())
-				.pergunta(resource.getPergunta()).programaDia(programaDia).build();
+		Enquete entidade = Enquete.builder().codigo(resource.getCodigo()).dataHoraFim(calendarFim.getTime())
+				.dataHoraInicio(calendarInicio.getTime()).pergunta(resource.getPergunta()).programaDia(programaDia)
+				.build();
 		Collection<EnqueteResposta> enqueteResposta = new ArrayList<>();
 		incluirRespostaEntidade(resource.getRespostas(), enqueteResposta, entidade);
 		entidade.setEnqueteResposta(enqueteResposta);
@@ -74,8 +75,8 @@ public class EnqueteServiceImpl implements EnqueteService {
 
 	private void incluirRespostaEntidade(Collection<EnqueteRespostaResource> resources,
 			Collection<EnqueteResposta> entidades, Enquete entidade) {
-		resources.forEach(r -> entidades.add(EnqueteResposta.builder().resposta(r.getResposta()).votacaoContra(0)
-				.votacaoFavor(0).enquete(entidade).build()));
+		resources.forEach(r -> entidades.add(EnqueteResposta.builder().codigo(r.getCodigo()).resposta(r.getResposta())
+				.votacaoContra(0).votacaoFavor(0).enquete(entidade).build()));
 	}
 
 	private void incluirRespostaResource(Collection<EnqueteRespostaResource> resources,
