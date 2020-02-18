@@ -4,5 +4,5 @@ import br.com.megahack.core.enquete.resource.EnqueteResource;
 
 public interface EnqueteConsultaService {
 
-	EnqueteResource buscarPorProgramaDia(String idPrograma);
+	EnqueteResource buscarPorProgramaAndDiaAndMesAndAno(String codPrograma, Integer dia, Integer mes, Integer ano);
 }

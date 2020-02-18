@@ -12,6 +12,8 @@ import br.com.megahack.core.enquete.EnqueteService;
 import br.com.megahack.core.enquete.resource.EnqueteResource;
 import br.com.megahack.core.enqueteresposta.EnqueteResposta;
 import br.com.megahack.core.enqueteresposta.resource.EnqueteRespostaResource;
+import br.com.megahack.core.programa.Programa;
+import br.com.megahack.core.programa.ProgramaConsultaService;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
@@ -23,10 +25,15 @@ public class EnqueteServiceImpl implements EnqueteService {
 	private EnqueteRepository repository;
 	@Autowired
 	private ProgramaDiaConsultaService programaDiaConsultaService;
+	@Autowired
+	private ProgramaConsultaService programaConsultaService;
 
 	@Override
 	public EnqueteResource incluir(EnqueteResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(resource.getIdPrograma());
+		Programa programa = programaConsultaService.buscarPorCodigo(resource.getCodPrograma());
+		String[] dtSplit = resource.getProgramaDiaResource().getData().split("/");
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorProgramaDiaMesAno(programa,
+				Integer.parseInt(dtSplit[0]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[2]));
 		String dtHrFim = resource.getDataHoraFim();
 		String dtHrIni = resource.getDataHoraInicio();
 		String[] dtHrFimSplit = dtHrFim.split("_");
@@ -54,8 +61,8 @@ public class EnqueteServiceImpl implements EnqueteService {
 	}
 
 	private void alterarResource(EnqueteResource resource, Enquete entidade) {
-		resource.setDataHoraFim(null);
-		resource.setDataHoraInicio(null);
+		resource.setDataHoraFim(resource.getDataHoraFim());
+		resource.setDataHoraInicio(resource.getDataHoraInicio());
 		resource.setPergunta(entidade.getPergunta());
 		Collection<EnqueteRespostaResource> resources = new ArrayList<>();
 		incluirRespostaResource(resources, entidade.getEnqueteResposta());

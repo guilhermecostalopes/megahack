@@ -13,7 +13,7 @@ public class ProgramaConsultaServiceImpl implements ProgramaConsultaService {
 	private ProgramaRepository repository;
 
 	@Override
-	public Programa buscarPorNome(String nome) {
-		return repository.findByNome(nome);
+	public Programa buscarPorCodigo(String codigo) {
+		return repository.findByCodigo(codigo);
 	}
 }

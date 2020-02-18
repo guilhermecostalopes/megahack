@@ -4,5 +4,6 @@ import java.util.Collection;
 
 public interface ChatProgramacaoDiaConsultaService {
 
-	Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(String idPrograma);
+	Collection<ChatProgramacaoDia> buscarPorProgramaAndDiaAndMesAndAno(String codPrograma, Integer dia, Integer mes,
+			Integer ano);
 }

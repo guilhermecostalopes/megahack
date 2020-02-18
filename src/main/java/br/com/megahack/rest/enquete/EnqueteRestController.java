@@ -22,12 +22,14 @@ public class EnqueteRestController extends MegaHackController {
 	@Autowired
 	private EnqueteConsultaService enqueteConsultaService;
 
-	@GetMapping(value = "/buscarPorProgramaDia/{idPrograma}", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/buscarPorProgramaDia/{codPrograma}/{dia}/{mes}/{ano}", produces = APPLICATION_JSON_VALUE)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR)")
-	public ResponseEntity<?> buscarPorProgramaDia(@PathVariable("idPrograma") String idPrograma)
+	public ResponseEntity<?> buscarPorProgramaDia(@PathVariable("codPrograma") String codPrograma,
+			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano)
 			throws UsuarioException {
 		try {
-			EnqueteResource resource = enqueteConsultaService.buscarPorProgramaDia(idPrograma);
+			EnqueteResource resource = enqueteConsultaService.buscarPorProgramaAndDiaAndMesAndAno(codPrograma, dia, mes,
+					ano);
 			return new ResponseEntity<>(resource, OK);
 		} catch (Exception e) {
 			return excecaoGeral(e, "-por-id", "Erro em buscar buscarPorProgramaDia !");

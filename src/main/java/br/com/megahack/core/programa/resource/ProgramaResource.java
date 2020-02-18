@@ -15,6 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = PRIVATE)
 public class ProgramaResource {
 
+	private String codigo;
 	private String nome;
 	private String descricao;
 	private Integer faixaEtaria;

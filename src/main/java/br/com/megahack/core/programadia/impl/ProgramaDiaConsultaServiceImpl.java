@@ -1,10 +1,12 @@
 package br.com.megahack.core.programadia.impl;
 
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.megahack.core.programa.Programa;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 
@@ -15,8 +17,9 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 	private ProgramaDiaRepository repository;
 
 	@Override
-	public ProgramaDia buscarPorId(String idPrograma) {
-		return repository.findById(idPrograma).orElse(null);
+	public ProgramaDia buscarPorProgramaDiaMesAno(Programa programa, Integer dia, Integer mes, Integer ano) {
+		GregorianCalendar calendar = new GregorianCalendar(ano, mes, dia);
+		return repository.findByProgramaAndData(programa, calendar.getTime());
 	}
 
 	@Override

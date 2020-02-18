@@ -15,9 +15,9 @@ public class ProgramaServiceImpl implements ProgramaService {
 
 	@Override
 	public ProgramaResource incluir(ProgramaResource resource) {
-		Programa entidade = repository.save(
-				Programa.builder().avaliacaoPrograma(resource.getAvaliacaoPrograma()).descricao(resource.getDescricao())
-						.faixaEtaria(resource.getFaixaEtaria()).nome(resource.getNome()).build());
+		Programa entidade = repository.save(Programa.builder().avaliacaoPrograma(resource.getAvaliacaoPrograma())
+				.codigo(resource.getCodigo()).descricao(resource.getDescricao()).faixaEtaria(resource.getFaixaEtaria())
+				.nome(resource.getNome()).build());
 		alterarResource(resource, entidade);
 		return resource;
 	}

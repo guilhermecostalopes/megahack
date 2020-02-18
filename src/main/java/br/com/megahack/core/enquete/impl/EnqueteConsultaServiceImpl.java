@@ -14,6 +14,8 @@ import br.com.megahack.core.enquete.EnqueteConsultaService;
 import br.com.megahack.core.enquete.resource.EnqueteResource;
 import br.com.megahack.core.enqueteresposta.EnqueteResposta;
 import br.com.megahack.core.enqueteresposta.resource.EnqueteRespostaResource;
+import br.com.megahack.core.programa.Programa;
+import br.com.megahack.core.programa.ProgramaConsultaService;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
@@ -25,10 +27,14 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 	private EnqueteRepository repository;
 	@Autowired
 	private ProgramaDiaConsultaService programaDiaConsultaService;
+	@Autowired
+	private ProgramaConsultaService programaConsultaService;
 
 	@Override
-	public EnqueteResource buscarPorProgramaDia(String idPrograma) {
-		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(idPrograma);
+	public EnqueteResource buscarPorProgramaAndDiaAndMesAndAno(String codPrograma, Integer dia, Integer mes,
+			Integer ano) {
+		Programa programa = programaConsultaService.buscarPorCodigo(codPrograma);
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorProgramaDiaMesAno(programa, dia, mes, ano);
 		Enquete entidade = repository.findByProgramaDia(programaDia);
 		return alterarResource(entidade);
 	}
@@ -62,8 +68,8 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 		Integer mes = calendario.get(Calendar.MONTH) + 1;
 		Integer ano = calendario.get(Calendar.YEAR);
 
-		EnqueteResource resource = EnqueteResource.builder().idPrograma(entidade.getProgramaDia().getId())
-				.pergunta(entidade.getPergunta())
+		EnqueteResource resource = EnqueteResource.builder()
+				.codPrograma(entidade.getProgramaDia().getPrograma().getCodigo()).pergunta(entidade.getPergunta())
 				.dataHoraFim(StringUtils.leftPad(diaFim.toString(), 2, "0") + "/"
 						+ StringUtils.leftPad(mesFim.toString(), 2, "0") + "/"
 						+ StringUtils.leftPad(anoFim.toString(), 2, "0") + " às "

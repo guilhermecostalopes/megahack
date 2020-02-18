@@ -28,7 +28,7 @@ public class ProgramaDiaServiceImpl implements ProgramaDiaService {
 
 	@Override
 	public ProgramaDiaResource incluir(ProgramaDiaResource resource) {
-		Programa programa = programaConsultaService.buscarPorNome(resource.getPrograma());
+		Programa programa = programaConsultaService.buscarPorCodigo(resource.getPrograma());
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
 		DiaSemanaEnum diaSemana = DiaSemanaEnum.buscaTipoEnum(resource.getDiaSemana());
 		String dt = resource.getData();

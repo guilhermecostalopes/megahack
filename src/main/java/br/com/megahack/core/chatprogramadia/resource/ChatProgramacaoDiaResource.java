@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = PRIVATE)
 public class ChatProgramacaoDiaResource {
 
-	private String idPrograma;
+	private String codPrograma;
 	private String usuario;
 	private String texto;
 	private ProgramaDiaResource programaResource;

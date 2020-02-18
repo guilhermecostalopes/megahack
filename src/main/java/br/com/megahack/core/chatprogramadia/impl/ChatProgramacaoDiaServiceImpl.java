@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaService;
 import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
+import br.com.megahack.core.programa.Programa;
+import br.com.megahack.core.programa.ProgramaConsultaService;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.usuario.Usuario;
@@ -23,10 +25,15 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 	private UsuarioConsultaService usuarioConsultaService;
 	@Autowired
 	private ProgramaDiaConsultaService programaDiaConsultaService;
+	@Autowired
+	private ProgramaConsultaService programaConsultaService;
 
 	@Override
 	public ChatProgramacaoDiaResource incluir(ChatProgramacaoDiaResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(resource.getIdPrograma());
+		Programa programa = programaConsultaService.buscarPorCodigo(resource.getCodPrograma());
+		String[] dtSplit = resource.getProgramaResource().getData().split("/");
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorProgramaDiaMesAno(programa,
+				Integer.parseInt(dtSplit[0]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[2]));
 		Usuario usuario = usuarioConsultaService.buscarUsuarioPorLogin(resource.getUsuario());
 		ChatProgramacaoDia entidade = repository.save(ChatProgramacaoDia.builder().programaDia(programaDia)
 				.usuario(usuario).texto(resource.getTexto()).build());
@@ -40,7 +47,7 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 		Integer ano = calendar.get(GregorianCalendar.YEAR);
 		Integer mes = calendar.get(GregorianCalendar.MONTH) + 1;
 		Integer dia = calendar.get(GregorianCalendar.DAY_OF_MONTH);
-		resource.setIdPrograma(entidade.getProgramaDia().getId());
+		resource.setCodPrograma(entidade.getProgramaDia().getPrograma().getCodigo());
 		resource.getProgramaResource().setData(StringUtils.leftPad(dia.toString(), 2, "0") + "/"
 				+ StringUtils.leftPad(mes.toString(), 2, "0") + "/" + ano.toString());
 		calendar = new GregorianCalendar();

@@ -8,5 +8,5 @@ import br.com.megahack.core.programa.Programa;
 @Repository
 interface ProgramaRepository extends CrudRepository<Programa, String> {
 
-	Programa findByNome(String nome);
+	Programa findByCodigo(String codigo);
 }

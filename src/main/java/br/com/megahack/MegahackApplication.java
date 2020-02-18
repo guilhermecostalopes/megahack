@@ -55,16 +55,16 @@ public class MegahackApplication {
 			incluirPrograma(programaService);
 			incluirProgramaDia(programaDiaService);
 			Collection<ProgramaDia> programaDias = programaDiaConsultaService.buscarTodos();
-			ProgramaDia programaDia = programaDias.stream()
-					.filter(f -> f.getPrograma().getNome().equals("Fátima Bernardes")).findAny().orElse(null);
-			incluirEnquete(enqueteService, programaDia.getId());
+			ProgramaDia programaDia = programaDias.stream().filter(f -> f.getPrograma().getCodigo().equals("001"))
+					.findAny().orElse(null);
+			incluirEnquete(enqueteService, programaDia.getPrograma().getCodigo());
 		};
 	}
 
-	private void incluirEnquete(EnqueteService enqueteService, String idPrograma) {
+	private void incluirEnquete(EnqueteService enqueteService, String codPrograma) {
 		Collection<EnqueteRespostaResource> respostas = new ArrayList<>();
 		incluirEnqueteResposta(respostas);
-		enqueteService.incluir(EnqueteResource.builder().idPrograma(idPrograma).dataHoraFim("20/01/2020_10:30:00")
+		enqueteService.incluir(EnqueteResource.builder().codPrograma(codPrograma).dataHoraFim("20/01/2020_10:30:00")
 				.dataHoraInicio("20/01/2020_11:30:00").pergunta("O que está achando do programa de hoje ?")
 				.programaDiaResource(programaDiaResource()).respostas(respostas).build());
 	}
@@ -81,7 +81,8 @@ public class MegahackApplication {
 	}
 
 	private void incluirPrograma(ProgramaService programaService) {
-		programaService.incluir(ProgramaResource.builder().avaliacaoPrograma(0).faixaEtaria(18).nome("Fátima Bernardes")
+		programaService.incluir(ProgramaResource.builder().avaliacaoPrograma(0).faixaEtaria(18).codigo("001")
+				.nome("Fátima Bernardes")
 				.descricao(
 						"Comandado por Fátima Bernardes, o programa une informação, debate de temas atuais, música, dança, contando com a "
 								+ "interação do público, especialistas.")
@@ -117,6 +118,6 @@ public class MegahackApplication {
 
 	private ProgramaDiaResource programaDiaResource() {
 		return ProgramaDiaResource.builder().data("20/01/2020").diaSemana("QUINTA").horaInicio("08:00:00")
-				.horaFim("11:30:00").programa("Fátima Bernardes").regiao("Sudeste").build();
+				.horaFim("11:30:00").programa("001").regiao("Sudeste").build();
 	}
 }

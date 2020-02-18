@@ -48,13 +48,14 @@ public class ChatProgramacaoDiaRestController extends MegaHackController {
 		}
 	}
 
-	@GetMapping(value = "/pesquisarPorPrograma/{idPrograma}", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/pesquisarPorPrograma/{codPrograma}/{dia}/{mes}/{ano}", produces = APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = ACCEPTED)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR')")
-	public ResponseEntity<?> buscarPaginacao(@PathVariable("idPrograma") String idPrograma) {
+	public ResponseEntity<?> buscarPaginacao(@PathVariable("codPrograma") String codPrograma,
+			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano) {
 		try {
 			Collection<ChatProgramacaoDia> pesquisa = chatProgramacaoDiaConsultaService
-					.buscarPorProgramacaoDia(idPrograma);
+					.buscarPorProgramaAndDiaAndMesAndAno(codPrograma, dia, mes, ano);
 			return new ResponseEntity<>(pesquisa, OK);
 		} catch (Exception e) {
 			return excecaoGeral(e, ERRO_CHAT_PROGRAMACAO_DIA_CHAVE + "-pesquisar",
