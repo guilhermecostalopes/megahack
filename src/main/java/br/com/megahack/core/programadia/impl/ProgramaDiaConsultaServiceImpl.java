@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import br.com.megahack.core.enuns.DiaSemanaEnum;
 import br.com.megahack.core.programa.Programa;
 import br.com.megahack.core.programa.ProgramaConsultaService;
-import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
+import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import br.com.megahack.core.regiao.Regiao;
 import br.com.megahack.core.regiao.RegiaoConsultaService;
 
@@ -26,7 +26,7 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 	private RegiaoConsultaService regiaoConsultaService;
 
 	@Override
-	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaResourceAAAA resource) {
+	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaDiaResource resource) {
 		Programa programa = programaConsultaService.buscarPorNome(resource.getPrograma());
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
 		DiaSemanaEnum diaSemana = DiaSemanaEnum.buscaTipoEnum(resource.getDiaSemana());
@@ -42,9 +42,9 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 		Date horaInicio = calendar.getTime();
 		calendar = new GregorianCalendar();
 		calendar.set(Integer.parseInt(dtSplit[2]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[0]),
-				Integer.parseInt(hfSplit[0]), Integer.parseInt(hfSplit[4]), Integer.parseInt(hfSplit[2]));
+				Integer.parseInt(hfSplit[0]), Integer.parseInt(hfSplit[1]), Integer.parseInt(hfSplit[2]));
 		Date horaFim = calendar.getTime();
-		return repository.findByProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(programa, regiao, diaSemana,
+		return repository.findByProgramaAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(programa, regiao, diaSemana,
 				horaInicio, horaFim);
 	}
 }

@@ -13,6 +13,6 @@ import br.com.megahack.core.regiao.Regiao;
 @Repository
 interface ProgramaDiaRepository extends CrudRepository<ProgramaDia, String> {
 
-	ProgramaDia findByProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(Programa programa, Regiao regiao,
+	ProgramaDia findByProgramaAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(Programa programa, Regiao regiao,
 			DiaSemanaEnum diaSemana, Date horaInicio, Date horaFim);
 }

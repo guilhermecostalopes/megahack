@@ -62,7 +62,7 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 						+ StringUtils.leftPad(minuto.toString(), 2, "0") + "/"
 						+ StringUtils.leftPad(segundo.toString(), 2, "0"));
 		resource.getProgramaResource().setDiaSemana(entidade.getProgramaDia().getDiaSemana().getDescricao());
-		resource.getProgramaResource().setPrograma(entidade.getProgramaDia().getProgramacao().getNome());
+		resource.getProgramaResource().setPrograma(entidade.getProgramaDia().getPrograma().getNome());
 		resource.getProgramaResource().setRegiao(entidade.getProgramaDia().getRegiao().getNome());
 		resource.setTexto(entidade.getTexto());
 		resource.setUsuario(entidade.getUsuario().getPessoa().getNome());

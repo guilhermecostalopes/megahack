@@ -2,9 +2,9 @@ package br.com.megahack.core.chatprogramadia;
 
 import java.util.Collection;
 
-import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
+import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 
 public interface ChatProgramacaoDiaConsultaService {
 
-	Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(ProgramaResourceAAAA resource);
+	Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(ProgramaDiaResource resource);
 }

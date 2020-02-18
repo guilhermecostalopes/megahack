@@ -1,8 +1,8 @@
 package br.com.megahack.core.programadia;
 
-import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
+import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 
 public interface ProgramaDiaConsultaService {
 
-	ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaResourceAAAA resource);
+	ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaDiaResource resource);
 }

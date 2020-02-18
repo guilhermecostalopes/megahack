@@ -9,20 +9,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import br.com.megahack.core.cidade.Cidade;
-import br.com.megahack.core.cidade.CidadeConsultaService;
 import br.com.megahack.core.cidade.CidadeService;
 import br.com.megahack.core.cidade.resource.CidadeResource;
-import br.com.megahack.core.estado.Estado;
-import br.com.megahack.core.estado.EstadoConsultaService;
 import br.com.megahack.core.estado.EstadoService;
 import br.com.megahack.core.estado.resource.EstadoResource;
 import br.com.megahack.core.grupo.GrupoService;
 import br.com.megahack.core.grupo.resource.GrupoResource;
 import br.com.megahack.core.programa.ProgramaService;
 import br.com.megahack.core.programa.resource.ProgramaResource;
-import br.com.megahack.core.regiao.Regiao;
-import br.com.megahack.core.regiao.RegiaoConsultaService;
+import br.com.megahack.core.programadia.ProgramaDiaService;
+import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import br.com.megahack.core.regiao.RegiaoService;
 import br.com.megahack.core.regiao.resource.RegiaoResource;
 import br.com.megahack.core.usuario.UsuarioConsultaService;
@@ -40,20 +36,22 @@ public class MegahackApplication {
 
 	@Bean
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
-			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService,
-			RegiaoConsultaService regiaoConsultaService, EstadoConsultaService estadoConsultaService,
-			CidadeConsultaService cidadeConsultaService, GrupoService grupoService, ProgramaService programaService) {
+			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService, GrupoService grupoService,
+			ProgramaService programaService, ProgramaDiaService programaDiaService) {
 		return args -> {
 			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
-			Regiao regiao = regiaoConsultaService.buscarPorNome("Sudeste");
-			incluirEstado(regiao, service);
-			Estado estado = estadoConsultaService.buscarPorNome("Minas Gerais");
-			incluirCidade(estado, cidadeService);
-			Cidade cidade = cidadeConsultaService.buscarPorNome("Belo Horizonte");
-			incluirUsuariosPessoas(usuarioService, usuarioConsultaService, cidade);
+			incluirEstado(service);
+			incluirCidade(cidadeService);
+			incluirUsuariosPessoas(usuarioService, usuarioConsultaService);
 			incluirPrograma(programaService);
+			incluirProgramaDia(programaDiaService);
 		};
+	}
+
+	private void incluirProgramaDia(ProgramaDiaService programaDiaService) {
+		programaDiaService.incluir(ProgramaDiaResource.builder().data("15/01/2020").diaSemana("SEGUNDA")
+				.horaInicio("08:00:00").horaFim("11:30:00").programa("Fátima Bernardes").regiao("Sudeste").build());
 	}
 
 	private void incluirPrograma(ProgramaService programaService) {
@@ -64,8 +62,7 @@ public class MegahackApplication {
 				.build());
 	}
 
-	private void incluirUsuariosPessoas(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
-			Cidade cidade) {
+	private void incluirUsuariosPessoas(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService) {
 		try {
 			byte[] avatarMasculino = imageToByte("/avatar/avatar_masculino.jfif");
 			usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
@@ -80,11 +77,11 @@ public class MegahackApplication {
 		regiaoService.incluir(RegiaoResource.builder().nome("Sudeste").build());
 	}
 
-	private void incluirEstado(Regiao regiao, EstadoService service) {
+	private void incluirEstado(EstadoService service) {
 		service.incluir(EstadoResource.builder().nome("Minas Gerais").regiao("Sudeste").abreviacao("MG").build());
 	}
 
-	private void incluirCidade(Estado estado, CidadeService cidadeService) {
+	private void incluirCidade(CidadeService cidadeService) {
 		cidadeService.incluir(CidadeResource.builder().nome("Belo Horizonte").estado("Minas Gerais").build());
 	}
 

@@ -1,4 +1,4 @@
-package br.com.megahack.core.programa.resource;
+package br.com.megahack.core.programadia.resource;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor(access = PRIVATE)
-public class ProgramaResourceAAAA extends PrincipalEnvioResource {
+public class ProgramaDiaResource extends PrincipalEnvioResource {
 
 	// para saber a programção do dia
 	private String programa;

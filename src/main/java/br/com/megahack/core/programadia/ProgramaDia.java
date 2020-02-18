@@ -44,7 +44,7 @@ import lombok.Setter;
 //@UniqueConstraint - Não pode ter registros iguais
 //@Index - Index do banco de dados
 @Table(name = "TAB_PROGRAMA_DIA", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_PROGRAMA",
-		"ST_DIA_SEMANA", "FK_REGIAO", "HR_INICIO", "HR_FIM" }, name = "U1_TAB_PROGRAMACAO_DIA") }, indexes = {
+		"ST_DIA_SEMANA", "FK_REGIAO", "HR_INICIO", "HR_FIM" }, name = "U1_TAB_PROGRAMA_DIA") }, indexes = {
 				@Index(columnList = "FK_PROGRAMA", name = "I1_TAB_PROGRAMA_DIA"),
 				@Index(columnList = "FK_REGIAO", name = "I2_TAB_PROGRAMA_DIA"),
 				@Index(columnList = "ST_DIA_SEMANA", name = "I3_TAB_PROGRAMA_DIA") })
@@ -57,7 +57,7 @@ public class ProgramaDia {
 	private String id;
 	@ManyToOne(targetEntity = Programa.class)
 	@JoinColumn(name = "FK_PROGRAMA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMA"))
-	private Programa programacao;
+	private Programa programa;
 	@ManyToOne(targetEntity = Regiao.class)
 	@JoinColumn(name = "FK_REGIAO", nullable = false, foreignKey = @ForeignKey(name = "FOR_REGIAO"))
 	private Regiao regiao;
