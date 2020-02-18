@@ -1,8 +1,11 @@
 package br.com.megahack.core.enquete.impl;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,10 +36,55 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 	private EnqueteResource alterarResource(Enquete entidade) {
 		Collection<EnqueteRespostaResource> resources = new ArrayList<>();
 		incluirRespostaResource(resources, entidade.getEnqueteResposta());
+
+		GregorianCalendar calendario = new GregorianCalendar();
+		calendario.setTime(entidade.getDataHoraFim());
+
+		Integer diaFim = calendario.get(Calendar.DAY_OF_WEEK);
+		Integer mesFim = calendario.get(Calendar.MONTH) + 1;
+		Integer anoFim = calendario.get(Calendar.YEAR);
+		Integer horaFim = calendario.get(Calendar.HOUR);
+		Integer minutoFim = calendario.get(Calendar.MINUTE);
+		Integer segundoFim = calendario.get(Calendar.SECOND);
+
+		calendario = new GregorianCalendar();
+		calendario.setTime(entidade.getDataHoraInicio());
+
+		Integer diaIni = calendario.get(Calendar.DAY_OF_WEEK);
+		Integer mesIni = calendario.get(Calendar.MONTH) + 1;
+		Integer anoIni = calendario.get(Calendar.YEAR);
+		Integer horaIni = calendario.get(Calendar.HOUR);
+		Integer minutoIni = calendario.get(Calendar.MINUTE);
+		Integer segundoIni = calendario.get(Calendar.SECOND);
+
+		calendario = new GregorianCalendar();
+		Integer dia = calendario.get(Calendar.DAY_OF_WEEK);
+		Integer mes = calendario.get(Calendar.MONTH) + 1;
+		Integer ano = calendario.get(Calendar.YEAR);
+
 		EnqueteResource resource = EnqueteResource.builder().idPrograma(entidade.getProgramaDia().getId())
-				.pergunta(entidade.getPergunta()).dataHoraFim(null).dataHoraInicio(null).respostas(resources)
-				.programaDiaResource(ProgramaDiaResource.builder().data(null).diaSemana(null).horaFim(null)
-						.horaInicio(null).programa(entidade.getProgramaDia().getPrograma().getNome())
+				.pergunta(entidade.getPergunta())
+				.dataHoraFim(StringUtils.leftPad(diaFim.toString(), 2, "0") + "/"
+						+ StringUtils.leftPad(mesFim.toString(), 2, "0") + "/"
+						+ StringUtils.leftPad(anoFim.toString(), 2, "0") + " às "
+						+ StringUtils.leftPad(horaFim.toString(), 2, "0") + ":"
+						+ StringUtils.leftPad(minutoFim.toString(), 2, "0") + ":"
+						+ StringUtils.leftPad(segundoFim.toString(), 2, "0"))
+				.dataHoraInicio(StringUtils.leftPad(diaIni.toString(), 2, "0") + "/"
+						+ StringUtils.leftPad(mesIni.toString(), 2, "0") + "/"
+						+ StringUtils.leftPad(anoIni.toString(), 2, "0") + " às "
+						+ StringUtils.leftPad(horaIni.toString(), 2, "0") + ":"
+						+ StringUtils.leftPad(minutoIni.toString(), 2, "0") + ":"
+						+ StringUtils.leftPad(segundoIni.toString(), 2, "0"))
+				.respostas(resources)
+				.programaDiaResource(ProgramaDiaResource.builder()
+						.data(StringUtils.leftPad(dia.toString(), 2, "0") + "/"
+								+ StringUtils.leftPad(mes.toString(), 2, "0") + "/"
+								+ StringUtils.leftPad(ano.toString(), 2, "0"))
+						.diaSemana(entidade.getProgramaDia().getDiaSemana().getDescricao())
+						.horaFim(entidade.getProgramaDia().getHoraFim())
+						.horaInicio(entidade.getProgramaDia().getHoraInicio())
+						.programa(entidade.getProgramaDia().getPrograma().getNome())
 						.regiao(entidade.getProgramaDia().getRegiao().getNome()).build())
 				.build();
 		return resource;
