@@ -44,23 +44,8 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 		resource.getProgramaResource().setData(StringUtils.leftPad(dia.toString(), 2, "0") + "/"
 				+ StringUtils.leftPad(mes.toString(), 2, "0") + "/" + ano.toString());
 		calendar = new GregorianCalendar();
-		calendar.setTime(entidade.getProgramaDia().getHoraInicio());
-		Integer hora = calendar.get(GregorianCalendar.HOUR);
-		Integer minuto = calendar.get(GregorianCalendar.MINUTE);
-		Integer segundo = calendar.get(GregorianCalendar.SECOND);
-		resource.getProgramaResource()
-				.setHoraFim(StringUtils.leftPad(hora.toString(), 2, "0") + "/"
-						+ StringUtils.leftPad(minuto.toString(), 2, "0") + "/"
-						+ StringUtils.leftPad(segundo.toString(), 2, "0"));
-		calendar = new GregorianCalendar();
-		calendar.setTime(entidade.getProgramaDia().getHoraFim());
-		hora = calendar.get(GregorianCalendar.HOUR);
-		minuto = calendar.get(GregorianCalendar.MINUTE);
-		segundo = calendar.get(GregorianCalendar.SECOND);
-		resource.getProgramaResource()
-				.setHoraInicio(StringUtils.leftPad(hora.toString(), 2, "0") + "/"
-						+ StringUtils.leftPad(minuto.toString(), 2, "0") + "/"
-						+ StringUtils.leftPad(segundo.toString(), 2, "0"));
+		resource.getProgramaResource().setHoraFim(entidade.getProgramaDia().getHoraFim());
+		resource.getProgramaResource().setHoraInicio(entidade.getProgramaDia().getHoraInicio());
 		resource.getProgramaResource().setDiaSemana(entidade.getProgramaDia().getDiaSemana().getDescricao());
 		resource.getProgramaResource().setPrograma(entidade.getProgramaDia().getPrograma().getNome());
 		resource.getProgramaResource().setRegiao(entidade.getProgramaDia().getRegiao().getNome());

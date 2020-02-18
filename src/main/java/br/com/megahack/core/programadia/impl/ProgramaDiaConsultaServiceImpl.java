@@ -31,20 +31,11 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
 		DiaSemanaEnum diaSemana = DiaSemanaEnum.buscaTipoEnum(resource.getDiaSemana());
 		String dt = resource.getData();
-		String hi = resource.getHoraFim();
-		String hf = resource.getHoraInicio();
-		String[] hiSplit = hi.split(":");
-		String[] hfSplit = hf.split(":");
 		String[] dtSplit = dt.split("/");
 		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.set(Integer.parseInt(dtSplit[2]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[0]),
-				Integer.parseInt(hiSplit[0]), Integer.parseInt(hiSplit[1]), Integer.parseInt(hiSplit[2]));
-		Date horaInicio = calendar.getTime();
-		calendar = new GregorianCalendar();
-		calendar.set(Integer.parseInt(dtSplit[2]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[0]),
-				Integer.parseInt(hfSplit[0]), Integer.parseInt(hfSplit[1]), Integer.parseInt(hfSplit[2]));
-		Date horaFim = calendar.getTime();
-		return repository.findByProgramaAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(programa, regiao, diaSemana,
-				horaInicio, horaFim);
+		calendar.set(Integer.parseInt(dtSplit[2]), Integer.parseInt(dtSplit[1]), Integer.parseInt(dtSplit[0]));
+		Date data = calendar.getTime();
+		return repository.findByProgramaAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFimAndData(programa, regiao, diaSemana,
+				resource.getHoraInicio(), resource.getHoraFim(), data);
 	}
 }

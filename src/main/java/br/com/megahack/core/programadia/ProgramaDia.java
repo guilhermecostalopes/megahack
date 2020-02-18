@@ -1,7 +1,7 @@
 package br.com.megahack.core.programadia;
 
 import static javax.persistence.EnumType.STRING;
-import static javax.persistence.TemporalType.TIME;
+import static javax.persistence.TemporalType.DATE;
 import static lombok.AccessLevel.PROTECTED;
 
 import java.util.Date;
@@ -64,13 +64,11 @@ public class ProgramaDia {
 	@Enumerated(STRING)
 	@Column(name = "ST_DIA_SEMANA", nullable = false, length = 20)
 	private DiaSemanaEnum diaSemana;
-	@Temporal(TIME)
+	@Temporal(DATE)
 	@Column(name = "DT_DATA", nullable = false)
 	private Date data;
-	@Temporal(TIME)
-	@Column(name = "HR_INICIO", nullable = false)
-	private Date horaInicio;
-	@Temporal(TIME)
-	@Column(name = "HR_FIM", nullable = false)
-	private Date horaFim;
+	@Column(name = "HR_INICIO", nullable = false, length = 10)
+	private String horaInicio;
+	@Column(name = "HR_FIM", nullable = false, length = 10)
+	private String horaFim;
 }

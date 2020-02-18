@@ -3,6 +3,8 @@ package br.com.megahack;
 import static br.com.megahack.Converter.imageToByte;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 
 import br.com.megahack.core.cidade.CidadeService;
 import br.com.megahack.core.cidade.resource.CidadeResource;
+import br.com.megahack.core.enquete.EnqueteService;
+import br.com.megahack.core.enquete.resource.EnqueteResource;
+import br.com.megahack.core.enqueteresposta.resource.EnqueteRespostaResource;
 import br.com.megahack.core.estado.EstadoService;
 import br.com.megahack.core.estado.resource.EstadoResource;
 import br.com.megahack.core.grupo.GrupoService;
@@ -37,7 +42,7 @@ public class MegahackApplication {
 	@Bean
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
 			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService, GrupoService grupoService,
-			ProgramaService programaService, ProgramaDiaService programaDiaService) {
+			ProgramaService programaService, ProgramaDiaService programaDiaService, EnqueteService enqueteService) {
 		return args -> {
 			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
@@ -46,12 +51,27 @@ public class MegahackApplication {
 			incluirUsuariosPessoas(usuarioService, usuarioConsultaService);
 			incluirPrograma(programaService);
 			incluirProgramaDia(programaDiaService);
+			incluirEnquete(enqueteService);
 		};
 	}
 
+	private void incluirEnquete(EnqueteService enqueteService) {
+		Collection<EnqueteRespostaResource> respostas = new ArrayList<>();
+		incluirEnqueteResposta(respostas);
+		enqueteService.incluir(EnqueteResource.builder().dataHoraFim("20/01/2020_10:30:00")
+				.dataHoraInicio("20/01/2020_11:30:00").pergunta("O que está achando do programa de hoje ?")
+				.programaDiaResource(programaDiaResource()).respostas(respostas).build());
+	}
+
+	private void incluirEnqueteResposta(Collection<EnqueteRespostaResource> respostas) {
+		respostas.add(EnqueteRespostaResource.builder().resposta("Ótimo").build());
+		respostas.add(EnqueteRespostaResource.builder().resposta("Bom").build());
+		respostas.add(EnqueteRespostaResource.builder().resposta("Ruim").build());
+		respostas.add(EnqueteRespostaResource.builder().resposta("Péssimo").build());
+	}
+
 	private void incluirProgramaDia(ProgramaDiaService programaDiaService) {
-		programaDiaService.incluir(ProgramaDiaResource.builder().data("15/01/2020").diaSemana("SEGUNDA")
-				.horaInicio("08:00:00").horaFim("11:30:00").programa("Fátima Bernardes").regiao("Sudeste").build());
+		programaDiaService.incluir(programaDiaResource());
 	}
 
 	private void incluirPrograma(ProgramaService programaService) {
@@ -87,5 +107,10 @@ public class MegahackApplication {
 
 	private void incluirGrupo(GrupoService grupoService) {
 		grupoService.incluir(GrupoResource.builder().nome("Administrador").role("ROLE_ADMINISTRADOR").build());
+	}
+
+	private ProgramaDiaResource programaDiaResource() {
+		return ProgramaDiaResource.builder().data("20/01/2020").diaSemana("QUINTA").horaInicio("08:00:00")
+				.horaFim("11:30:00").programa("Fátima Bernardes").regiao("Sudeste").build();
 	}
 }
