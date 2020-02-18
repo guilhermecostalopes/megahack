@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaConsultaService;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaService;
 import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
@@ -54,7 +53,7 @@ public class ChatProgramacaoDiaRestController extends MegaHackController {
 	public ResponseEntity<?> buscarPaginacao(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano) {
 		try {
-			Collection<ChatProgramacaoDia> pesquisa = chatProgramacaoDiaConsultaService
+			Collection<ChatProgramacaoDiaResource> pesquisa = chatProgramacaoDiaConsultaService
 					.buscarPorProgramaAndDiaAndMesAndAno(codPrograma, dia, mes, ano);
 			return new ResponseEntity<>(pesquisa, OK);
 		} catch (Exception e) {

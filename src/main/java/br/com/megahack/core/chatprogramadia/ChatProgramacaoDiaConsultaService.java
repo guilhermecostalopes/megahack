@@ -2,8 +2,10 @@ package br.com.megahack.core.chatprogramadia;
 
 import java.util.Collection;
 
+import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
+
 public interface ChatProgramacaoDiaConsultaService {
 
-	Collection<ChatProgramacaoDia> buscarPorProgramaAndDiaAndMesAndAno(String codPrograma, Integer dia, Integer mes,
-			Integer ano);
+	Collection<ChatProgramacaoDiaResource> buscarPorProgramaAndDiaAndMesAndAno(String codPrograma, Integer dia,
+			Integer mes, Integer ano);
 }
