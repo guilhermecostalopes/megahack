@@ -36,8 +36,8 @@ import lombok.Setter;
 //@UniqueConstraint - Não pode ter registros iguais
 //@Index - Index do banco de dados
 @Table(name = "TAB_ENQUETE_RESPOSTA", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_ENQUETE",
-		"DES_RESPOSTA" }, name = "U1_TAB_ENQUETE_RESPOSTA") }, indexes = {
-				@Index(columnList = "FK_ENQUETE", name = "I1_TAB_ENQUETE_RESPOSTA"),
+		"DES_RESPOSTA", "DES_CODIGO" }, name = "U1_TAB_ENQUETE_RESPOSTA") }, indexes = {
+				@Index(columnList = "DES_CODIGO", name = "I1_TAB_ENQUETE_RESPOSTA"),
 				@Index(columnList = "FK_ENQUETE", name = "I2_TAB_ENQUETE_RESPOSTA") })
 public class EnqueteResposta {
 
@@ -49,6 +49,8 @@ public class EnqueteResposta {
 	@ManyToOne(targetEntity = Enquete.class)
 	@JoinColumn(name = "FK_ENQUETE", nullable = false, foreignKey = @ForeignKey(name = "FOR_ENQUETE"))
 	private Enquete enquete;
+	@Column(name = "DES_CODIGO", nullable = false, length = 3)
+	private String codigo;
 	@Column(name = "DES_RESPOSTA", nullable = false, length = 300)
 	private String resposta;
 	// Deve iniciar com 0, para resposta inserida

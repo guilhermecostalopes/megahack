@@ -50,7 +50,7 @@ public class ChatProgramacaoDiaRestController extends MegaHackController {
 	@GetMapping(value = "/pesquisarPorPrograma/{codPrograma}/{dia}/{mes}/{ano}", produces = APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = ACCEPTED)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR')")
-	public ResponseEntity<?> buscarPaginacao(@PathVariable("codPrograma") String codPrograma,
+	public ResponseEntity<?> pesquisarPorPrograma(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano) {
 		try {
 			Collection<ChatProgramacaoDiaResource> pesquisa = chatProgramacaoDiaConsultaService

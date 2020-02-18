@@ -10,4 +10,5 @@ import br.com.megahack.core.programadia.ProgramaDia;
 interface EnqueteRepository extends CrudRepository<Enquete, String> {
 
 	Enquete findByProgramaDia(ProgramaDia programaDia);
+
 }

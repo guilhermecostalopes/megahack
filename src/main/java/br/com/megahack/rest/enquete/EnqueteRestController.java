@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.megahack.core.enquete.EnqueteConsultaService;
 import br.com.megahack.core.enquete.resource.EnqueteResource;
+import br.com.megahack.core.enqueteresposta.EnqueteRespostaService;
 import br.com.megahack.exception.UsuarioException;
 import br.com.megahack.rest.MegaHackController;
 
@@ -21,10 +22,38 @@ public class EnqueteRestController extends MegaHackController {
 
 	@Autowired
 	private EnqueteConsultaService enqueteConsultaService;
+	@Autowired
+	private EnqueteRespostaService enqueteRespostaService;
 
-	@GetMapping(value = "/buscarPorProgramaDia/{codPrograma}/{dia}/{mes}/{ano}", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/votarFavor/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> votarFavor(@PathVariable("codPrograma") String codPrograma,
+			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
+			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete) throws UsuarioException {
+		try {
+			EnqueteResource resource = enqueteRespostaService.votarFavor(codigoRepostaEnquete, codPrograma, dia, mes,
+					ano);
+			return new ResponseEntity<>(resource, OK);
+		} catch (Exception e) {
+			return excecaoGeral(e, "-por-id", "Erro em buscar buscarPorProgramaDia !");
+		}
+	}
+
+	@GetMapping(value = "/votarContra/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> votarContra(@PathVariable("codPrograma") String codPrograma,
+			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
+			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete) throws UsuarioException {
+		try {
+			EnqueteResource resource = enqueteRespostaService.votarContra(codigoRepostaEnquete, codPrograma, dia, mes,
+					ano);
+			return new ResponseEntity<>(resource, OK);
+		} catch (Exception e) {
+			return excecaoGeral(e, "-por-id", "Erro em buscar buscarPorProgramaDia !");
+		}
+	}
+
+	@GetMapping(value = "/pesquisarPorPrograma/{codPrograma}/{dia}/{mes}/{ano}", produces = APPLICATION_JSON_VALUE)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR)")
-	public ResponseEntity<?> buscarPorProgramaDia(@PathVariable("codPrograma") String codPrograma,
+	public ResponseEntity<?> pesquisarPorPrograma(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano)
 			throws UsuarioException {
 		try {

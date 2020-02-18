@@ -46,10 +46,11 @@ import lombok.Setter;
 @Entity
 //@UniqueConstraint - Não pode ter registros iguais
 //@Index - Index do banco de dados
-@Table(name = "TAB_ENQUETE", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_PROGRAMA_DIA",
-		"DES_PERGUNTA" }, name = "U1_TAB_ENQUETE") }, indexes = {
+@Table(name = "TAB_ENQUETE", uniqueConstraints = { @UniqueConstraint(columnNames = { "FK_PROGRAMA_DIA", "DES_PERGUNTA",
+		"DES_CODIGO" }, name = "U1_TAB_ENQUETE") }, indexes = {
 				@Index(columnList = "FK_PROGRAMA_DIA", name = "I1_TAB_ENQUETE"),
-				@Index(columnList = "DES_PERGUNTA", name = "I2_TAB_ENQUETE") })
+				@Index(columnList = "DES_PERGUNTA", name = "I2_TAB_ENQUETE"),
+				@Index(columnList = "DES_CODIGO", name = "I3_TAB_ENQUETE") })
 public class Enquete {
 
 	@Id
@@ -60,6 +61,8 @@ public class Enquete {
 	@ManyToOne(targetEntity = ProgramaDia.class)
 	@JoinColumn(name = "FK_PROGRAMA_DIA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMA_DIA"))
 	private ProgramaDia programaDia;
+	@Column(name = "DES_CODIGO", nullable = false, length = 300)
+	private String codigo;
 	@Column(name = "DES_PERGUNTA", nullable = false, length = 300)
 	private String pergunta;
 	@Temporal(TIMESTAMP)

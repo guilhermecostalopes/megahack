@@ -41,7 +41,8 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 
 	private EnqueteResource alterarResource(Enquete entidade) {
 		Collection<EnqueteRespostaResource> resources = new ArrayList<>();
-		incluirRespostaResource(resources, entidade.getEnqueteResposta());
+		Integer totalVotos = 0;
+		incluirRespostaResource(resources, entidade.getEnqueteResposta(), totalVotos);
 
 		GregorianCalendar calendario = new GregorianCalendar();
 		calendario.setTime(entidade.getDataHoraFim());
@@ -68,7 +69,7 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 		Integer mes = calendario.get(Calendar.MONTH) + 1;
 		Integer ano = calendario.get(Calendar.YEAR);
 
-		EnqueteResource resource = EnqueteResource.builder()
+		EnqueteResource resource = EnqueteResource.builder().totalVotos(totalVotos)
 				.codPrograma(entidade.getProgramaDia().getPrograma().getCodigo()).pergunta(entidade.getPergunta())
 				.dataHoraFim(StringUtils.leftPad(diaFim.toString(), 2, "0") + "/"
 						+ StringUtils.leftPad(mesFim.toString(), 2, "0") + "/"
@@ -97,8 +98,11 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 	}
 
 	private void incluirRespostaResource(Collection<EnqueteRespostaResource> resources,
-			Collection<EnqueteResposta> entidades) {
-		entidades.forEach(e -> resources.add(EnqueteRespostaResource.builder().resposta(e.getResposta())
-				.votacaoContra(e.getVotacaoContra()).votacaoFavor(e.getVotacaoFavor()).build()));
+			Collection<EnqueteResposta> entidades, Integer totalVotos) {
+		for (EnqueteResposta e : entidades) {
+			totalVotos = e.getVotacaoContra() + e.getVotacaoFavor();
+			resources.add(EnqueteRespostaResource.builder().resposta(e.getResposta())
+					.votacaoContra(e.getVotacaoContra()).votacaoFavor(e.getVotacaoFavor()).build());
+		}
 	}
 }

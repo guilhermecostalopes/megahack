@@ -26,5 +26,6 @@ public class EnqueteResource {
 	private String dataHoraInicio;
 	// Deve vir no formato DD/MM/YYYY_HH:MM:SS
 	private String dataHoraFim;
+	private Integer totalVotos;
 	private Collection<EnqueteRespostaResource> respostas;
 }
