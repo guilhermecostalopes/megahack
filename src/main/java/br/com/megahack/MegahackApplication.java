@@ -11,6 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaService;
+import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
 import br.com.megahack.core.cidade.CidadeService;
 import br.com.megahack.core.cidade.resource.CidadeResource;
 import br.com.megahack.core.enquete.EnqueteService;
@@ -45,7 +47,8 @@ public class MegahackApplication {
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
 			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService, GrupoService grupoService,
 			ProgramaService programaService, ProgramaDiaService programaDiaService, EnqueteService enqueteService,
-			ProgramaDiaConsultaService programaDiaConsultaService) {
+			ProgramaDiaConsultaService programaDiaConsultaService,
+			ChatProgramacaoDiaService chatProgramacaoDiaService) {
 		return args -> {
 			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
@@ -58,7 +61,35 @@ public class MegahackApplication {
 			ProgramaDia programaDia = programaDias.stream().filter(f -> f.getPrograma().getCodigo().equals("001"))
 					.findAny().orElse(null);
 			incluirEnquete(enqueteService, programaDia.getPrograma().getCodigo());
+			incluirChat(chatProgramacaoDiaService);
 		};
+	}
+
+	private void incluirChat(ChatProgramacaoDiaService chatProgramacaoDiaService) {
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
+				.codPrograma("001")
+				.texto("Tudo bem Fátima Bernades ?")
+				.usuario("85655497042")
+				.programaResource(programaDiaResource())
+				.build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
+				.codPrograma("001")
+				.texto("O programa de hoje está ótimo ... Parabéns ...")
+				.usuario("85655497041")
+				.programaResource(programaDiaResource())
+				.build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
+				.codPrograma("001")
+				.texto("Esepero que amanhã continue os mesmos artistas ...")
+				.usuario("85655497043")
+				.programaResource(programaDiaResource())
+				.build());
+		chatProgramacaoDiaService.incluir(ChatProgramacaoDiaResource.builder()
+				.codPrograma("001")
+				.texto("Como sabe fazer um ótimo programa, essa Fátima Bernades")
+				.usuario("85655497044")
+				.programaResource(programaDiaResource())
+				.build());
 	}
 
 	private void incluirEnquete(EnqueteService enqueteService, String codPrograma) {
@@ -92,9 +123,22 @@ public class MegahackApplication {
 	private void incluirUsuariosPessoas(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService) {
 		try {
 			byte[] avatarMasculino = imageToByte("/avatar/avatar_masculino.jfif");
+			byte[] avatarFeminino = imageToByte("/avatar/avatar_masculino.jfif");
 			usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
 					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarMasculino).grupo("Administrador").build());
+					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
+			
+			usuarioService.incluir(UsuarioResource.builder().login("85655497041").senha("y|e8HTcAJ9").nome("João")
+					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
+					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
+			
+			usuarioService.incluir(UsuarioResource.builder().login("85655497043").senha("y|e8HTcAJ9").nome("Helena")
+					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
+					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());
+			
+			usuarioService.incluir(UsuarioResource.builder().login("85655497044").senha("y|e8HTcAJ9").nome("Maria")
+					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
+					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());
 		} catch (IOException e) {
 			log.error(e.getMessage(), e);
 		}

@@ -56,6 +56,8 @@ public class Usuario {
 	private String login;
 	@Column(name = "DS_SENHA", nullable = false, length = 300)
 	private String senha;
+	@Column(name = "DS_SEXO", nullable = false, length = 1)
+	private String sexo;
 	@Column(name = "IM_AVATAR", nullable = false)
 	private byte[] avatar;
 	// Quando salvar um usuário deve ter no minimo um grupo

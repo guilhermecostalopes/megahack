@@ -19,6 +19,7 @@ public class UsuarioResource {
 	private String id;
 	private String login;
 	private String senha;
+	private String sexo;
 	private byte[] avatar;
 	// Pessoa
 	private String nome;

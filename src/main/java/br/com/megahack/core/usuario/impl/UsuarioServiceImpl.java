@@ -29,22 +29,24 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private CidadeConsultaService cidadeConsultaService;
 	@Autowired
 	private GrupoConsultaService grupoConsultaService;
-	
+
 	@Override
 	public UsuarioResource incluir(UsuarioResource resource) {
 		String senha = passwordEncoder.encode(resource.getSenha());
-		Usuario usuario = Usuario.builder().login(resource.getLogin()).senha(senha).avatar(resource.getAvatar()).build();
-		
+		Usuario usuario = Usuario.builder().login(resource.getLogin()).senha(senha).avatar(resource.getAvatar())
+				.sexo(resource.getSexo()).build();
+
 		Cidade cidade = cidadeConsultaService.buscarPorNome(resource.getCidade());
-		Pessoa pessoa = Pessoa.builder().nome(resource.getNome()).sobreNome(resource.getSobreNome()).cidade(cidade).dataAniversario(new Date()).build();
+		Pessoa pessoa = Pessoa.builder().nome(resource.getNome()).sobreNome(resource.getSobreNome()).cidade(cidade)
+				.dataAniversario(new Date()).build();
 		pessoa.setUsuario(usuario);
 		usuario.setPessoa(pessoa);
-		
+
 		Grupo grupo = grupoConsultaService.buscarPorNome(resource.getGrupo());
 		Collection<UsuarioGrupo> usuariosGrupos = new ArrayList<>();
 		usuariosGrupos.add(UsuarioGrupo.builder().grupo(grupo).usuario(usuario).build());
 		usuario.setUsuariosGrupos(usuariosGrupos);
-		
+
 		usuario = repository.save(usuario);
 		alterarResource(resource, usuario);
 		return resource;
@@ -73,6 +75,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		resource.setAvatar(usuario.getAvatar());
 		resource.setId(usuario.getId());
 		resource.setLogin(usuario.getLogin());
+		resource.setSexo(usuario.getSexo());
 		resource.setSenha(null);
 	}
 }
