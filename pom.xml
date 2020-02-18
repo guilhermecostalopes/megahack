@@ -93,7 +93,8 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		
-		<dependency>
+		<!--
+		 <dependency>
 			<groupId>br.com.ghsistemas.principal</groupId>
 			<artifactId>utilitario</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
@@ -108,7 +109,7 @@
 			<artifactId>rest</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+		 -->
 	</dependencies>
 
 	<build>
