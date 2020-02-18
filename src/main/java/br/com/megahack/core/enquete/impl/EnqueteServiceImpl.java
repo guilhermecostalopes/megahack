@@ -26,8 +26,7 @@ public class EnqueteServiceImpl implements EnqueteService {
 
 	@Override
 	public EnqueteResource incluir(EnqueteResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService
-				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource.getProgramaDiaResource());
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(resource.getIdPrograma());
 		String dtHrFim = resource.getDataHoraFim();
 		String dtHrIni = resource.getDataHoraInicio();
 		String[] dtHrFimSplit = dtHrFim.split("_");
@@ -68,8 +67,8 @@ public class EnqueteServiceImpl implements EnqueteService {
 
 	private void incluirRespostaEntidade(Collection<EnqueteRespostaResource> resources,
 			Collection<EnqueteResposta> entidades, Enquete entidade) {
-		resources.forEach(r -> entidades
-				.add(EnqueteResposta.builder().resposta(r.getResposta()).votacaoContra(0).votacaoFavor(0).enquete(entidade).build()));
+		resources.forEach(r -> entidades.add(EnqueteResposta.builder().resposta(r.getResposta()).votacaoContra(0)
+				.votacaoFavor(0).enquete(entidade).build()));
 	}
 
 	private void incluirRespostaResource(Collection<EnqueteRespostaResource> resources,

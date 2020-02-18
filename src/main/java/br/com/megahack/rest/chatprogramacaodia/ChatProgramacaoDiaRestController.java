@@ -9,8 +9,9 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,7 +21,6 @@ import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaConsultaService;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaService;
 import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
-import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import br.com.megahack.rest.MegaHackController;
 
 @RestController
@@ -48,13 +48,13 @@ public class ChatProgramacaoDiaRestController extends MegaHackController {
 		}
 	}
 
-	@PutMapping(value = "/pesquisarPorPrograma", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/pesquisarPorPrograma/{idPrograma}", produces = APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = ACCEPTED)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR')")
-	public ResponseEntity<?> buscarPaginacao(ProgramaDiaResource resource) {
+	public ResponseEntity<?> buscarPaginacao(@PathVariable("idPrograma") String idPrograma) {
 		try {
 			Collection<ChatProgramacaoDia> pesquisa = chatProgramacaoDiaConsultaService
-					.buscarPorProgramacaoDia(resource);
+					.buscarPorProgramacaoDia(idPrograma);
 			return new ResponseEntity<>(pesquisa, OK);
 		} catch (Exception e) {
 			return excecaoGeral(e, ERRO_CHAT_PROGRAMACAO_DIA_CHAVE + "-pesquisar",

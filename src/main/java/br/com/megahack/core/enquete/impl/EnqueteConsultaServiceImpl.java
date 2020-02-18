@@ -24,24 +24,22 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 	private ProgramaDiaConsultaService programaDiaConsultaService;
 
 	@Override
-	public EnqueteResource buscarPorProgramaDia(EnqueteResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService
-				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource.getProgramaDiaResource());
+	public EnqueteResource buscarPorProgramaDia(String idPrograma) {
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(idPrograma);
 		Enquete entidade = repository.findByProgramaDia(programaDia);
-		alterarResource(resource, entidade);
-		return resource;
+		return alterarResource(entidade);
 	}
 
-	private void alterarResource(EnqueteResource resource, Enquete entidade) {
-		resource.setDataHoraFim(null);
-		resource.setDataHoraInicio(null);
-		resource.setPergunta(entidade.getPergunta());
+	private EnqueteResource alterarResource(Enquete entidade) {
 		Collection<EnqueteRespostaResource> resources = new ArrayList<>();
 		incluirRespostaResource(resources, entidade.getEnqueteResposta());
-		resource.setRespostas(resources);
-		resource.setProgramaDiaResource(ProgramaDiaResource.builder().data(null).diaSemana(null).horaFim(null)
-				.horaInicio(null).programa(entidade.getProgramaDia().getPrograma().getNome())
-				.regiao(entidade.getProgramaDia().getRegiao().getNome()).build());
+		EnqueteResource resource = EnqueteResource.builder().idPrograma(entidade.getProgramaDia().getId())
+				.pergunta(entidade.getPergunta()).dataHoraFim(null).dataHoraInicio(null).respostas(resources)
+				.programaDiaResource(ProgramaDiaResource.builder().data(null).diaSemana(null).horaFim(null)
+						.horaInicio(null).programa(entidade.getProgramaDia().getPrograma().getNome())
+						.regiao(entidade.getProgramaDia().getRegiao().getNome()).build())
+				.build();
+		return resource;
 	}
 
 	private void incluirRespostaResource(Collection<EnqueteRespostaResource> resources,

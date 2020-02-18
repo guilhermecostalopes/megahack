@@ -1,8 +1,10 @@
 package br.com.megahack.core.programadia;
 
-import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
+import java.util.Collection;
 
 public interface ProgramaDiaConsultaService {
 
-	ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaDiaResource resource);
+	ProgramaDia buscarPorId(String idPrograma);
+
+	Collection<ProgramaDia> buscarTodos();
 }

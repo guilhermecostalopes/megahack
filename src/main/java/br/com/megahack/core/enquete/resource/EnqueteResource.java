@@ -19,6 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor(access = PRIVATE)
 public class EnqueteResource {
 
+	private String idPrograma;
 	private ProgramaDiaResource programaDiaResource;
 	private String pergunta;
 	// Deve vir no formato DD/MM/YYYY_HH:MM:SS

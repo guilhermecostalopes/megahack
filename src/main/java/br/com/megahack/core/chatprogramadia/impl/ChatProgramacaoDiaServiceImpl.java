@@ -26,11 +26,10 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 
 	@Override
 	public ChatProgramacaoDiaResource incluir(ChatProgramacaoDiaResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService
-				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource.getProgramaResource());
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(resource.getIdPrograma());
 		Usuario usuario = usuarioConsultaService.buscarUsuarioPorLogin(resource.getUsuario());
-		ChatProgramacaoDia entidade = repository
-				.save(ChatProgramacaoDia.builder().programaDia(programaDia).usuario(usuario).texto(resource.getTexto()).build());
+		ChatProgramacaoDia entidade = repository.save(ChatProgramacaoDia.builder().programaDia(programaDia)
+				.usuario(usuario).texto(resource.getTexto()).build());
 		alterarResource(resource, entidade);
 		return resource;
 	}
@@ -41,6 +40,7 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 		Integer ano = calendar.get(GregorianCalendar.YEAR);
 		Integer mes = calendar.get(GregorianCalendar.MONTH) + 1;
 		Integer dia = calendar.get(GregorianCalendar.DAY_OF_MONTH);
+		resource.setIdPrograma(entidade.getProgramaDia().getId());
 		resource.getProgramaResource().setData(StringUtils.leftPad(dia.toString(), 2, "0") + "/"
 				+ StringUtils.leftPad(mes.toString(), 2, "0") + "/" + ano.toString());
 		calendar = new GregorianCalendar();

@@ -9,7 +9,6 @@ import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaConsultaService;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
-import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 
 @Service
 public class ChatProgramacaoDiaConsultaServiceImpl implements ChatProgramacaoDiaConsultaService {
@@ -20,9 +19,8 @@ public class ChatProgramacaoDiaConsultaServiceImpl implements ChatProgramacaoDia
 	private ProgramaDiaConsultaService programaDiaConsultaService;
 
 	@Override
-	public Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(ProgramaDiaResource resource) {
-		ProgramaDia programaDia = programaDiaConsultaService
-				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource);
+	public Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(String idPrograma) {
+		ProgramaDia programaDia = programaDiaConsultaService.buscarPorId(idPrograma);
 		return repository.findByProgramaDia(programaDia);
 	}
 }

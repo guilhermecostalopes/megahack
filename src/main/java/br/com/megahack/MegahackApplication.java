@@ -22,6 +22,8 @@ import br.com.megahack.core.grupo.GrupoService;
 import br.com.megahack.core.grupo.resource.GrupoResource;
 import br.com.megahack.core.programa.ProgramaService;
 import br.com.megahack.core.programa.resource.ProgramaResource;
+import br.com.megahack.core.programadia.ProgramaDia;
+import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.programadia.ProgramaDiaService;
 import br.com.megahack.core.programadia.resource.ProgramaDiaResource;
 import br.com.megahack.core.regiao.RegiaoService;
@@ -42,7 +44,8 @@ public class MegahackApplication {
 	@Bean
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
 			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService, GrupoService grupoService,
-			ProgramaService programaService, ProgramaDiaService programaDiaService, EnqueteService enqueteService) {
+			ProgramaService programaService, ProgramaDiaService programaDiaService, EnqueteService enqueteService,
+			ProgramaDiaConsultaService programaDiaConsultaService) {
 		return args -> {
 			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
@@ -51,14 +54,17 @@ public class MegahackApplication {
 			incluirUsuariosPessoas(usuarioService, usuarioConsultaService);
 			incluirPrograma(programaService);
 			incluirProgramaDia(programaDiaService);
-			incluirEnquete(enqueteService);
+			Collection<ProgramaDia> programaDias = programaDiaConsultaService.buscarTodos();
+			ProgramaDia programaDia = programaDias.stream()
+					.filter(f -> f.getPrograma().getNome().equals("Fátima Bernardes")).findAny().orElse(null);
+			incluirEnquete(enqueteService, programaDia.getId());
 		};
 	}
 
-	private void incluirEnquete(EnqueteService enqueteService) {
+	private void incluirEnquete(EnqueteService enqueteService, String idPrograma) {
 		Collection<EnqueteRespostaResource> respostas = new ArrayList<>();
 		incluirEnqueteResposta(respostas);
-		enqueteService.incluir(EnqueteResource.builder().dataHoraFim("20/01/2020_10:30:00")
+		enqueteService.incluir(EnqueteResource.builder().idPrograma(idPrograma).dataHoraFim("20/01/2020_10:30:00")
 				.dataHoraInicio("20/01/2020_11:30:00").pergunta("O que está achando do programa de hoje ?")
 				.programaDiaResource(programaDiaResource()).respostas(respostas).build());
 	}
