@@ -33,7 +33,7 @@ public class EnqueteRespostaServiceImpl implements EnqueteRespostaService {
 			Integer dia, Integer mes, Integer ano) {
 		Enquete enquete = enqueteConsultaService.buscaPorCodigo(codigoEnquete);
 		EnqueteResposta enqueteResposta = buscarEnqueteRespostaPorCodigoEnquete(codigoRepostaEnquete, enquete);
-		Integer votacaoContra = enqueteResposta.getVotacaoFavor();
+		Integer votacaoContra = enqueteResposta.getVotacaoContra();
 		enqueteResposta.setVotacaoContra(votacaoContra + 1);
 		repository.save(enqueteResposta);
 		return enqueteConsultaService.buscarPorProgramaAndDiaAndMesAndAno(codPrograma, dia, mes, ano);

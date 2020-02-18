@@ -25,7 +25,7 @@ public class EnqueteRestController extends MegaHackController {
 	@Autowired
 	private EnqueteRespostaService enqueteRespostaService;
 
-	@GetMapping(value = "/votarFavor/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/votarFavor/{codPrograma}/{dia}/{mes}/{ano}/{codigoRepostaEnquete}/{codigoEnquete}", produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> votarFavor(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
 			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete,
@@ -39,7 +39,7 @@ public class EnqueteRestController extends MegaHackController {
 		}
 	}
 
-	@GetMapping(value = "/votarContra/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/votarContra/{codPrograma}/{dia}/{mes}/{ano}/{codigoRepostaEnquete}/{codigoEnquete}", produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> votarContra(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
 			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete,

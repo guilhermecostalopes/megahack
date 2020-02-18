@@ -74,7 +74,7 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 		Integer mes = calendario.get(Calendar.MONTH) + 1;
 		Integer ano = calendario.get(Calendar.YEAR);
 
-		EnqueteResource resource = EnqueteResource.builder().totalVotos(totalVotos)
+		EnqueteResource resource = EnqueteResource.builder()
 				.codPrograma(entidade.getProgramaDia().getPrograma().getCodigo()).pergunta(entidade.getPergunta())
 				.dataHoraFim(StringUtils.leftPad(diaFim.toString(), 2, "0") + "/"
 						+ StringUtils.leftPad(mesFim.toString(), 2, "0") + "/"
