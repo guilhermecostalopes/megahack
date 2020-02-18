@@ -22,9 +22,7 @@ import br.com.megahack.core.usuario.UsuarioService;
 import br.com.megahack.core.usuario.resource.UsuarioResource;
 import br.com.megahack.exception.UsuarioException;
 import br.com.megahack.rest.MegaHackController;
-import lombok.extern.apachecommons.CommonsLog;
 
-@CommonsLog
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioRestController extends MegaHackController {

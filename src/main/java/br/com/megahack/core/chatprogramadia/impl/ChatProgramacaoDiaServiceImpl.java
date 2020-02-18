@@ -30,7 +30,7 @@ public class ChatProgramacaoDiaServiceImpl implements ChatProgramacaoDiaService 
 				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource.getProgramaResource());
 		Usuario usuario = usuarioConsultaService.buscarUsuarioPorLogin(resource.getUsuario());
 		ChatProgramacaoDia entidade = repository
-				.save(ChatProgramacaoDia.builder().programaDia(programaDia).usuario(usuario).build());
+				.save(ChatProgramacaoDia.builder().programaDia(programaDia).usuario(usuario).texto(resource.getTexto()).build());
 		alterarResource(resource, entidade);
 		return resource;
 	}

@@ -1,6 +1,6 @@
 package br.com.megahack.core.programadia.resource;
 
-import static lombok.AccessLevel.PRIVATE;
+import static lombok.AccessLevel.PUBLIC;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor(access = PRIVATE)
+@AllArgsConstructor(access = PUBLIC)
 public class ProgramaDiaResource {
 
 	// para saber a programção do dia
