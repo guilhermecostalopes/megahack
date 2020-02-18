@@ -40,6 +40,6 @@ public class EnqueteRespostaServiceImpl implements EnqueteRespostaService {
 	}
 
 	private EnqueteResposta buscarEnqueteRespostaPorCodigoEnquete(String codigoRepostaEnquete, Enquete enquete) {
-		return repository.buscarPorCodigoAndEnquete(codigoRepostaEnquete, enquete);
+		return repository.findByCodigoAndEnquete(codigoRepostaEnquete, enquete);
 	}
 }

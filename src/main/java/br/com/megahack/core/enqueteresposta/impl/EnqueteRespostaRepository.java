@@ -9,5 +9,5 @@ import br.com.megahack.core.enqueteresposta.EnqueteResposta;
 @Repository
 interface EnqueteRespostaRepository extends CrudRepository<EnqueteResposta, String> {
 
-	EnqueteResposta buscarPorCodigoAndEnquete(String codigo, Enquete enquete);
+	EnqueteResposta findByCodigoAndEnquete(String codigo, Enquete enquete);
 }
