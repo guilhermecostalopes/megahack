@@ -1,18 +1,5 @@
 package br.com.megahack.rest.usuario;
 
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.ALTERAR;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.ALTERAR_CHAVE;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.BUSCAR;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.ERRO_EM;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.EXCLAMACAO;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.EXCLUIR;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.EXCLUIR_CHAVE;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.INCLUIR;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.INCLUIR_CHAVE;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.PESQUISAR;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.PESQUISAR_CHAVE;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.POR_ID;
-import static br.com.ghsistemas.principal.utilitario.constantes.ConstantesUtil.POR_ID_CHAVE;
 import static org.springframework.http.HttpStatus.ACCEPTED;
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.CREATED;
@@ -34,13 +21,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ghsistemas.principal.utilitario.mensagem.Mensagem;
-import br.com.megahack.exception.UsuarioException;
-import br.com.megahack.rest.MegaHackController;
 import br.com.megahack.core.usuario.UsuarioConsultaService;
 import br.com.megahack.core.usuario.UsuarioService;
 import br.com.megahack.core.usuario.resource.UsuarioFiltroResource;
 import br.com.megahack.core.usuario.resource.UsuarioPaginacaoResource;
 import br.com.megahack.core.usuario.resource.UsuarioResource;
+import br.com.megahack.exception.UsuarioException;
+import br.com.megahack.rest.MegaHackController;
 import lombok.extern.apachecommons.CommonsLog;
 
 @CommonsLog
@@ -67,7 +54,7 @@ public class UsuarioRestController extends MegaHackController {
 		} catch (UsuarioException e) {
 			return excecaoSistema(e);
 		} catch (Exception e) {
-			return excecaoGeral(e, ERRO_USUARIO_CHAVE + INCLUIR_CHAVE, ERRO_EM + INCLUIR + USUARIO + EXCLAMACAO);
+			return excecaoGeral(e, ERRO_USUARIO_CHAVE + "", "" + USUARIO + "");
 		}
 	}
 
@@ -82,7 +69,7 @@ public class UsuarioRestController extends MegaHackController {
 		} catch (UsuarioException e) {
 			return excecaoSistema(e);
 		} catch (Exception e) {
-			return excecaoGeral(e, ERRO_USUARIO_CHAVE + ALTERAR_CHAVE, ERRO_EM + ALTERAR + USUARIO + EXCLAMACAO);
+			return excecaoGeral(e, ERRO_USUARIO_CHAVE + "", "" + USUARIO + "");
 		}
 	}
 
@@ -96,7 +83,7 @@ public class UsuarioRestController extends MegaHackController {
 		} catch (UsuarioException e) {
 			return excecaoSistema(e);
 		} catch (Exception e) {
-			return excecaoGeral(e, ERRO_USUARIO_CHAVE + EXCLUIR_CHAVE, ERRO_EM + EXCLUIR + USUARIO + EXCLAMACAO);
+			return excecaoGeral(e, ERRO_USUARIO_CHAVE + "", "" + USUARIO + "");
 		}
 	}
 
@@ -110,7 +97,7 @@ public class UsuarioRestController extends MegaHackController {
 		} catch (UsuarioException e) {
 			return excecaoSistema(e);
 		} catch (Exception e) {
-			return excecaoGeral(e, ERRO_USUARIO_CHAVE + PESQUISAR_CHAVE, ERRO_EM + PESQUISAR + USUARIO + EXCLAMACAO);
+			return excecaoGeral(e, ERRO_USUARIO_CHAVE + "", "" + USUARIO + "");
 		}
 	}
 
@@ -124,7 +111,7 @@ public class UsuarioRestController extends MegaHackController {
 		} catch (UsuarioException e) {
 			return excecaoSistema(e);
 		} catch (Exception e) {
-			return excecaoGeral(e, ERRO_USUARIO_CHAVE + POR_ID_CHAVE, ERRO_EM + BUSCAR + USUARIO + POR_ID + EXCLAMACAO);
+			return excecaoGeral(e, ERRO_USUARIO_CHAVE + "", "" + USUARIO + "");
 		}
 	}
 
