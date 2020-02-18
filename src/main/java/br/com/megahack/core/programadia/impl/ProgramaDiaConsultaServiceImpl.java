@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.megahack.core.enuns.DiaSemanaEnum;
 import br.com.megahack.core.programa.Programa;
 import br.com.megahack.core.programa.ProgramaConsultaService;
-import br.com.megahack.core.programa.resource.ProgramaResource;
+import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 import br.com.megahack.core.regiao.Regiao;
@@ -26,7 +26,7 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 	private RegiaoConsultaService regiaoConsultaService;
 
 	@Override
-	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaResource resource) {
+	public ProgramaDia buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(ProgramaResourceAAAA resource) {
 		Programa programa = programaConsultaService.buscarPorNome(resource.getPrograma());
 		Regiao regiao = regiaoConsultaService.buscarPorNome(resource.getRegiao());
 		DiaSemanaEnum diaSemana = DiaSemanaEnum.buscaTipoEnum(resource.getDiaSemana());

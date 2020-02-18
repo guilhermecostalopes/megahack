@@ -37,7 +37,7 @@ import lombok.Setter;
 //@Index - Index do banco de dados
 @Table(name = "TAB_CHAT_PROGRAMACAO_DIA", indexes = {
 		@Index(columnList = "FK_USUARIO", name = "I1_TAB_CHAT_PROGRAMACAO_DIA"),
-		@Index(columnList = "FK_PROGRAMACAO_DIA", name = "I2_TAB_CHAT_PROGRAMACAO_DIA") })
+		@Index(columnList = "FK_PROGRAMA_DIA", name = "I2_TAB_CHAT_PROGRAMACAO_DIA") })
 public class ChatProgramacaoDia {
 
 	@Id
@@ -49,7 +49,7 @@ public class ChatProgramacaoDia {
 	@JoinColumn(name = "FK_USUARIO", nullable = false, foreignKey = @ForeignKey(name = "FOR_USUARIO"))
 	private Usuario usuario;
 	@ManyToOne(targetEntity = ProgramaDia.class)
-	@JoinColumn(name = "FK_PROGRAMACAO_DIA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMACAO_DIA"))
+	@JoinColumn(name = "FK_PROGRAMA_DIA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMA_DIA"))
 	private ProgramaDia programaDia;
 	@Column(name = "DES_TEXTO", nullable = false, length = 50000)
 	private String texto;

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaConsultaService;
-import br.com.megahack.core.programa.resource.ProgramaResource;
+import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
 import br.com.megahack.core.programadia.ProgramaDia;
 import br.com.megahack.core.programadia.ProgramaDiaConsultaService;
 
@@ -20,7 +20,7 @@ public class ChatProgramacaoDiaConsultaServiceImpl implements ChatProgramacaoDia
 	private ProgramaDiaConsultaService programaDiaConsultaService;
 
 	@Override
-	public Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(ProgramaResource resource) {
+	public Collection<ChatProgramacaoDia> buscarPorProgramacaoDia(ProgramaResourceAAAA resource) {
 		ProgramaDia programaDia = programaDiaConsultaService
 				.buscarPorProgramacaoAndRegiaoAndDiaSemanaAndHoraInicioAndHoraFim(resource);
 		return repository.findByProgramaDia(programaDia);

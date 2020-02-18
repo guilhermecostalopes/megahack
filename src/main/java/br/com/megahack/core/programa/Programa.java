@@ -31,13 +31,13 @@ import lombok.Setter;
 @Entity
 //@UniqueConstraint - Não pode ter registros iguais
 //@Index - Index do banco de dados
-@Table(name = "TAB_PROGRAMACAO", uniqueConstraints = {
-		@UniqueConstraint(columnNames = { "DS_NOME" }, name = "U1_TAB_PROGRAMACAO") }, indexes = {
-				@Index(columnList = "DS_NOME", name = "I1_TAB_PROGRAMACAO") })
+@Table(name = "TAB_PROGRAMA", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "DS_NOME" }, name = "U1_TAB_PROGRAMA") }, indexes = {
+				@Index(columnList = "DS_NOME", name = "I1_TAB_PROGRAMA") })
 public class Programa {
 
 	@Id
-	@Column(name = "PK_PROGRAMACAO")
+	@Column(name = "PK_PROGRAMA")
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String id;

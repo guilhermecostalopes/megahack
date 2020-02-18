@@ -28,7 +28,7 @@ import br.com.megahack.core.chatprogramadia.ChatProgramacaoDia;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaConsultaService;
 import br.com.megahack.core.chatprogramadia.ChatProgramacaoDiaService;
 import br.com.megahack.core.chatprogramadia.resource.ChatProgramacaoDiaResource;
-import br.com.megahack.core.programa.resource.ProgramaResource;
+import br.com.megahack.core.programa.resource.ProgramaResourceAAAA;
 import br.com.megahack.exception.ChatProgramacaoDiaException;
 import br.com.megahack.rest.MegaHackController;
 import lombok.extern.apachecommons.CommonsLog;
@@ -65,7 +65,7 @@ public class ChatProgramacaoDiaRestController extends MegaHackController {
 	@GetMapping(value = "/pesquisarPorPrograma", produces = APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = ACCEPTED)
 	// @PreAuthorize("hasAnyRole('ROLE_ADMINISTRADOR')")
-	public ResponseEntity<?> buscarPaginacao(ProgramaResource resource) {
+	public ResponseEntity<?> buscarPaginacao(ProgramaResourceAAAA resource) {
 		try {
 			Collection<ChatProgramacaoDia> pesquisa = chatProgramacaoDiaConsultaService
 					.buscarPorProgramacaoDia(resource);

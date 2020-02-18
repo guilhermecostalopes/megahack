@@ -37,8 +37,8 @@ import lombok.Setter;
 //@UniqueConstraint - Não pode ter registros iguais
 //@Index - Index do banco de dados
 @Table(name = "TAB_EMISSORA_PROGRAMACAO_DIA", uniqueConstraints = { @UniqueConstraint(columnNames = {
-		"FK_PROGRAMACAO_DIA", "FK_EMISSORA" }, name = "U1_TAB_EMISSORA_PROGRAMACAO_DIA") }, indexes = {
-				@Index(columnList = "FK_PROGRAMACAO_DIA", name = "I1_TAB_EMISSORA_PROGRAMACAO"),
+		"FK_PROGRAMA_DIA", "FK_EMISSORA" }, name = "U1_TAB_EMISSORA_PROGRAMACAO_DIA") }, indexes = {
+				@Index(columnList = "FK_PROGRAMA_DIA", name = "I1_TAB_EMISSORA_PROGRAMACAO"),
 				@Index(columnList = "FK_EMISSORA", name = "I2_TAB_EMISSORA_PROGRAMACAO") })
 public class EmissoraProgramacaoDia {
 
@@ -48,7 +48,7 @@ public class EmissoraProgramacaoDia {
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
 	private String id;
 	@ManyToOne(targetEntity = ProgramaDia.class)
-	@JoinColumn(name = "FK_PROGRAMACAO_DIA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMACAO_DIA"))
+	@JoinColumn(name = "FK_PROGRAMA_DIA", nullable = false, foreignKey = @ForeignKey(name = "FOR_PROGRAMA_DIA"))
 	private ProgramaDia programaDia;
 	@ManyToOne(targetEntity = Emissora.class)
 	@JoinColumn(name = "FK_EMISSORA", nullable = false, foreignKey = @ForeignKey(name = "FOR_EMISSORA"))

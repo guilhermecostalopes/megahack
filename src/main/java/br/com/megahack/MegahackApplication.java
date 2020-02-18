@@ -19,6 +19,8 @@ import br.com.megahack.core.estado.EstadoService;
 import br.com.megahack.core.estado.resource.EstadoResource;
 import br.com.megahack.core.grupo.GrupoService;
 import br.com.megahack.core.grupo.resource.GrupoResource;
+import br.com.megahack.core.programa.ProgramaService;
+import br.com.megahack.core.programa.resource.ProgramaResource;
 import br.com.megahack.core.regiao.Regiao;
 import br.com.megahack.core.regiao.RegiaoConsultaService;
 import br.com.megahack.core.regiao.RegiaoService;
@@ -40,7 +42,7 @@ public class MegahackApplication {
 	CommandLineRunner init(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,
 			RegiaoService regiaoService, EstadoService service, CidadeService cidadeService,
 			RegiaoConsultaService regiaoConsultaService, EstadoConsultaService estadoConsultaService,
-			CidadeConsultaService cidadeConsultaService, GrupoService grupoService) {
+			CidadeConsultaService cidadeConsultaService, GrupoService grupoService, ProgramaService programaService) {
 		return args -> {
 			incluirGrupo(grupoService);
 			incluirRegiao(regiaoService);
@@ -50,7 +52,16 @@ public class MegahackApplication {
 			incluirCidade(estado, cidadeService);
 			Cidade cidade = cidadeConsultaService.buscarPorNome("Belo Horizonte");
 			incluirUsuariosPessoas(usuarioService, usuarioConsultaService, cidade);
+			incluirPrograma(programaService);
 		};
+	}
+
+	private void incluirPrograma(ProgramaService programaService) {
+		programaService.incluir(ProgramaResource.builder().avaliacaoPrograma(0).faixaEtaria(18).nome("Fátima Bernardes")
+				.descricao(
+						"Comandado por Fátima Bernardes, o programa une informação, debate de temas atuais, música, dança, contando com a "
+								+ "interação do público, especialistas.")
+				.build());
 	}
 
 	private void incluirUsuariosPessoas(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService,

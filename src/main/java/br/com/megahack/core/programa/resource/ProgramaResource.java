@@ -16,15 +16,8 @@ import lombok.Setter;
 @AllArgsConstructor(access = PRIVATE)
 public class ProgramaResource extends PrincipalEnvioResource {
 
-	// para saber a programção do dia
-	private String programa;
-	private String regiao;
-	// Deve ter os mesmos nomes do enum DiaSemanaEnum
-	private String diaSemana;
-	// Deve vir no formato DD/MM/YYYY
-	private String data;
-	// Deve vir no formato HH:MM:SS
-	private String horaInicio;
-	// Deve vir no formato HH:MM:SS
-	private String horaFim;
+	private String nome;
+	private String descricao;
+	private Integer faixaEtaria;
+	private Integer avaliacaoPrograma;
 }
