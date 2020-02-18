@@ -28,10 +28,11 @@ public class EnqueteRestController extends MegaHackController {
 	@GetMapping(value = "/votarFavor/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> votarFavor(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
-			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete) throws UsuarioException {
+			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete,
+			@PathVariable("codigoEnquete") String codigoEnquete) throws UsuarioException {
 		try {
-			EnqueteResource resource = enqueteRespostaService.votarFavor(codigoRepostaEnquete, codPrograma, dia, mes,
-					ano);
+			EnqueteResource resource = enqueteRespostaService.votarFavor(codigoRepostaEnquete, codigoEnquete,
+					codPrograma, dia, mes, ano);
 			return new ResponseEntity<>(resource, OK);
 		} catch (Exception e) {
 			return excecaoGeral(e, "-por-id", "Erro em buscar buscarPorProgramaDia !");
@@ -41,10 +42,11 @@ public class EnqueteRestController extends MegaHackController {
 	@GetMapping(value = "/votarContra/{codigoEnquete}/{codigoRepostaEnquete}", produces = APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> votarContra(@PathVariable("codPrograma") String codPrograma,
 			@PathVariable("dia") Integer dia, @PathVariable("mes") Integer mes, @PathVariable("ano") Integer ano,
-			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete) throws UsuarioException {
+			@PathVariable("codigoRepostaEnquete") String codigoRepostaEnquete,
+			@PathVariable("codigoEnquete") String codigoEnquete) throws UsuarioException {
 		try {
-			EnqueteResource resource = enqueteRespostaService.votarContra(codigoRepostaEnquete, codPrograma, dia, mes,
-					ano);
+			EnqueteResource resource = enqueteRespostaService.votarContra(codigoRepostaEnquete, codigoEnquete,
+					codPrograma, dia, mes, ano);
 			return new ResponseEntity<>(resource, OK);
 		} catch (Exception e) {
 			return excecaoGeral(e, "-por-id", "Erro em buscar buscarPorProgramaDia !");

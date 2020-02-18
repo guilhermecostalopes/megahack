@@ -3,6 +3,7 @@ package br.com.megahack.core.enqueteresposta.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.megahack.core.enquete.Enquete;
 import br.com.megahack.core.enquete.EnqueteConsultaService;
 import br.com.megahack.core.enquete.resource.EnqueteResource;
 import br.com.megahack.core.enqueteresposta.EnqueteResposta;
@@ -17,9 +18,10 @@ public class EnqueteRespostaServiceImpl implements EnqueteRespostaService {
 	private EnqueteConsultaService enqueteConsultaService;
 
 	@Override
-	public EnqueteResource votarFavor(String codigoRepostaEnquete, String codPrograma, Integer dia, Integer mes,
-			Integer ano) {
-		EnqueteResposta enqueteResposta = buscarEnqueteResposta(codigoRepostaEnquete);
+	public EnqueteResource votarFavor(String codigoRepostaEnquete, String codigoEnquete, String codPrograma,
+			Integer dia, Integer mes, Integer ano) {
+		Enquete enquete = enqueteConsultaService.buscaPorCodigo(codigoEnquete);
+		EnqueteResposta enqueteResposta = buscarEnqueteRespostaPorCodigoEnquete(codigoRepostaEnquete, enquete);
 		Integer votacaoFavor = enqueteResposta.getVotacaoFavor();
 		enqueteResposta.setVotacaoFavor(votacaoFavor + 1);
 		repository.save(enqueteResposta);
@@ -27,16 +29,17 @@ public class EnqueteRespostaServiceImpl implements EnqueteRespostaService {
 	}
 
 	@Override
-	public EnqueteResource votarContra(String codigoRepostaEnquete, String codPrograma, Integer dia, Integer mes,
-			Integer ano) {
-		EnqueteResposta enqueteResposta = buscarEnqueteResposta(codigoRepostaEnquete);
+	public EnqueteResource votarContra(String codigoRepostaEnquete, String codigoEnquete, String codPrograma,
+			Integer dia, Integer mes, Integer ano) {
+		Enquete enquete = enqueteConsultaService.buscaPorCodigo(codigoEnquete);
+		EnqueteResposta enqueteResposta = buscarEnqueteRespostaPorCodigoEnquete(codigoRepostaEnquete, enquete);
 		Integer votacaoContra = enqueteResposta.getVotacaoFavor();
 		enqueteResposta.setVotacaoContra(votacaoContra + 1);
 		repository.save(enqueteResposta);
 		return enqueteConsultaService.buscarPorProgramaAndDiaAndMesAndAno(codPrograma, dia, mes, ano);
 	}
 
-	private EnqueteResposta buscarEnqueteResposta(String codigoRepostaEnquete) {
-		return repository.buscarPorCodigo(codigoRepostaEnquete);
+	private EnqueteResposta buscarEnqueteRespostaPorCodigoEnquete(String codigoRepostaEnquete, Enquete enquete) {
+		return repository.buscarPorCodigoAndEnquete(codigoRepostaEnquete, enquete);
 	}
 }

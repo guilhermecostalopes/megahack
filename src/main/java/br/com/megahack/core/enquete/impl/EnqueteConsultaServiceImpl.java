@@ -39,6 +39,11 @@ public class EnqueteConsultaServiceImpl implements EnqueteConsultaService {
 		return alterarResource(entidade);
 	}
 
+	@Override
+	public Enquete buscaPorCodigo(String codigo) {
+		return repository.findByCodigo(codigo);
+	}
+
 	private EnqueteResource alterarResource(Enquete entidade) {
 		Collection<EnqueteRespostaResource> resources = new ArrayList<>();
 		Integer totalVotos = 0;
