@@ -1,6 +1,7 @@
 package br.com.megahack.core.programadia.impl;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class ProgramaDiaConsultaServiceImpl implements ProgramaDiaConsultaServic
 	@Override
 	public ProgramaDia buscarPorProgramaDiaMesAno(Programa programa, Integer dia, Integer mes, Integer ano) {
 		GregorianCalendar calendar = new GregorianCalendar(ano, mes, dia);
-		return repository.findByProgramaAndData(programa, calendar.getTime());
+		Date d = calendar.getTime();
+		return repository.findByProgramaAndData(programa, d);
 	}
 
 	@Override
