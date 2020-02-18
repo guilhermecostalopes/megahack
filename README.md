@@ -37,7 +37,7 @@ Alguns endpoints para testes, que pode ser feito no ```Postman```.
 
 Conforme imagem:
 
-![Imagem configuração](/resources/avatar/avatar_feminino.jfif)
+![Imagem configuração](/img/login_token.png)
 
 2º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
 
