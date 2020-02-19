@@ -26,7 +26,7 @@ Faça o clone deste repositório e importa ele para o eclipse instalado.
 
 Utiilizamos o ```heroku``` para publicação de nosso app ```backend```. Utilizando o endereço: https://timemegahack.herokuapp.com
 
-Alguns endpoints para testes, que pode ser feito no ```Postman```.
+Alguns endpoints para testes, que pode ser feito no ```Postman```. 
 
 1º) Deve buscar o token, neste link: https://timemegahack.herokuapp.com/api/auth , método POST, utilizandos como objeto ```JSON```, assim retornando o token:
 
@@ -39,25 +39,30 @@ Conforme imagem:
 
 ![Imagem configuração](/img/login_token.png)
 
-2º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
+2º) Após ter o token, devendo escrever Authorization, no key e colar o token no value, conforme imagem:
+
+![Imagem configuração](/img/token.png)
+
+3º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
 
 ![Imagem configuração](/img/chat.png)
 
-3º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar as enquetes de um determinado programa por dia.
+4º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar as enquetes de um determinado programa por dia.
 
 ![Imagem configuração](/img/login_token.png)
 
-4º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método GET, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
+5º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método GET, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
 
 ![Imagem configuração](/img/login_token.png)
 
-5º) https://timemegahack.herokuapp.com/enquetes/votarContra/001/20/1/2020/001/001 , método GET, Para fazer votação contra em uma enquete já cadastrada de um determinado programa por dia.
+6º) https://timemegahack.herokuapp.com/enquetes/votarContra/001/20/1/2020/001/001 , método GET, Para fazer votação contra em uma enquete já cadastrada de um determinado programa por dia.
 
 ![Imagem configuração](/img/login_token.png)
 
-6º) DER do banco de dados:
+7º) DER do banco de dados:
 
 ![Imagem configuração](/img/banco_dados.png)
+
 
 ## Autor
 
