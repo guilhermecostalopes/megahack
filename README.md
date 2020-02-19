@@ -53,11 +53,11 @@ Conforme imagem:
 
 5º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método GET, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
 
-![Imagem configuração](/img/login_token.png)
+![Imagem configuração](/img/votar_favor.png)
 
 6º) https://timemegahack.herokuapp.com/enquetes/votarContra/001/20/1/2020/001/001 , método GET, Para fazer votação contra em uma enquete já cadastrada de um determinado programa por dia.
 
-![Imagem configuração](/img/login_token.png)
+![Imagem configuração](/img/votar_contra.png)
 
 7º) DER do banco de dados:
 
