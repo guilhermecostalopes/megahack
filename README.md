@@ -1,8 +1,10 @@
 Desafio proposto pela Rede Globo buscando inovação na interação com a TV no Mega Hackathon da Shawee
 
-# Interativa
+# Frameworks
 
-Aplicação em Java utilizando diversos frameworks do Spring boot. Dentre eles:
+Aplicação em Java.
+
+## Frameworks do Spring boot, utilizados:
 
 1) spring-boot-starter-data-rest;
 2) spring-boot-starter-security;
@@ -10,13 +12,15 @@ Aplicação em Java utilizando diversos frameworks do Spring boot. Dentre eles:
 4) spring-boot-devtools;
 5) spring-boot-starter-data-jpa.
 
-Outros frameworks utilizados:
+## Outros frameworks:
 
 1) lombok;
 2) jjwt;
 3) commons-lang3.
 
-Banco de dados relacional utilizado, ```postgresql```. Para fazer o ```download``` basta acessar o link: https://www.postgresql.org/download/
+## Banco de dados relacional utilizado:
+
+```postgresql```. Para fazer o ```download``` basta acessar o link: https://www.postgresql.org/download/
 
 Cria o banco de dados com o nome: ```megahack```
 
