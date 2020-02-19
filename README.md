@@ -16,6 +16,8 @@ Outros frameworks utilizados:
 2) jjwt;
 3) commons-lang3.
 
+Banco de dados relacional utilizado, ```postgresql```. Para fazer o ```download``` basta acessar o link: https://www.postgresql.org/download/
+
 ## Começando
 
 Faça o download de qualquer versão do ```Eclipse```, no site https://www.eclipse.org/eclipseide/ . Neste desafio utilizamos o ```STS 4```, que pode ser baixado no site: https://spring.io/tools .
@@ -28,7 +30,7 @@ Utiilizamos o ```heroku``` para publicação de nosso app ```backend```. Utiliza
 
 Alguns endpoints para testes, que pode ser feito no ```Postman```. 
 
-1º) Deve buscar o token, neste link: https://timemegahack.herokuapp.com/api/auth , método POST, utilizandos como objeto ```JSON```, assim retornando o token:
+1º) Deve buscar o token, neste link: https://timemegahack.herokuapp.com/api/auth , método ```POST```, utilizandos como objeto ```JSON```, assim retornando o token:
 
 {<br>
 	"login":"85655497042",<br>
@@ -43,19 +45,19 @@ Conforme imagem:
 
 ![Imagem configuração](/img/token.png)
 
-3º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
+3º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método ```GET```, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
 
 ![Imagem configuração](/img/chat.png)
 
-4º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar as enquetes de um determinado programa por dia.
+4º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método ```GET```, Para visualizar as enquetes de um determinado programa por dia.
 
 ![Imagem configuração](/img/consulta_enquete.png)
 
-5º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método GET, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
+5º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método ```GET```, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
 
 ![Imagem configuração](/img/votar_favor.png)
 
-6º) https://timemegahack.herokuapp.com/enquetes/votarContra/001/20/1/2020/001/001 , método GET, Para fazer votação contra em uma enquete já cadastrada de um determinado programa por dia.
+6º) https://timemegahack.herokuapp.com/enquetes/votarContra/001/20/1/2020/001/001 , método ```GET```, Para fazer votação contra em uma enquete já cadastrada de um determinado programa por dia.
 
 ![Imagem configuração](/img/votar_contra.png)
 
