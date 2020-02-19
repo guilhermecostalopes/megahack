@@ -2,7 +2,6 @@ package br.com.megahack.core.enqueteresposta.resource;
 
 import static lombok.AccessLevel.PRIVATE;
 
-import br.com.megahack.core.enquete.Enquete;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +15,6 @@ import lombok.Setter;
 @AllArgsConstructor(access = PRIVATE)
 public class EnqueteRespostaResource {
 
-	private Enquete enquete;
 	private String codigo;
 	private String resposta;
 	private Integer votacaoFavor;

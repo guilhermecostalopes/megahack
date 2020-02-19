@@ -49,7 +49,7 @@ Conforme imagem:
 
 4º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar as enquetes de um determinado programa por dia.
 
-![Imagem configuração](/img/login_token.png)
+![Imagem configuração](/img/consulta_enquete.png)
 
 5º) https://timemegahack.herokuapp.com/enquetes/votarFavor/001/20/1/2020/001/001 , método GET, Para fazer votação a favor em uma enquete já cadastrada de um determinado programa por dia.
 
