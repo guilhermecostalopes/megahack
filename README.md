@@ -18,6 +18,13 @@ Outros frameworks utilizados:
 
 Banco de dados relacional utilizado, ```postgresql```. Para fazer o ```download``` basta acessar o link: https://www.postgresql.org/download/
 
+Cria o banco de dados com o nome: ```megahack```
+
+Deve alterar as configurações de banco de dados no arquivo: ```application.properties```, pelos parametros:
+
+1) ```spring.datasource.username```, alterando para o que você digitou
+2) ```spring.datasource.password```, alterando para o que você digitou
+
 ## Começando
 
 Faça o download de qualquer versão do ```Eclipse```, no site https://www.eclipse.org/eclipseide/ . Neste desafio utilizamos o ```STS 4```, que pode ser baixado no site: https://spring.io/tools .
