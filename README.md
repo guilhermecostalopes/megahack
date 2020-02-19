@@ -30,9 +30,9 @@ Alguns endpoints para testes, que pode ser feito no ```Postman```.
 
 1º) Deve buscar o token, neste link: https://timemegahack.herokuapp.com/api/auth , método POST, utilizandos como objeto ```JSON```, assim retornando o token:
 
-{
-	"login":"85655497042",
-	"senha":"y|e8HTcAJ9"
+{<br>
+	"login":"85655497042",<br>
+	"senha":"y|e8HTcAJ9"<br>
 }
 
 Conforme imagem:
@@ -69,19 +69,19 @@ Conforme imagem:
 
 9º) Para o cadastro do usuário, via postman, deve ter o objeto:
 
-{
+{<br>
 	"login":"",<br>
-	"senha":"",
-	"sexo":"M"; ```(Deve ser M ou F)```
-	"avatar": "", ```Deve deixar desse jeito```
-	```Pessoa```
-	"nome":"",
-	"sobreNome":"",
-	```Deve ser DD/MM/YYYY```
-	"dataAniversario":"",
-	"cidade":"Belo Horizonte",
-	```Grupo só pode ser este```
-	"grupo":"Administrador"
+	"senha":"",<br>
+	"sexo":"M"; ```(Deve ser M ou F)```<br>
+	"avatar": "", ```Deve deixar desse jeito```<br>
+	```Pessoa```<br>
+	"nome":"",<br>
+	"sobreNome":"",<br>
+	```Deve ser DD/MM/YYYY```<br>
+	"dataAniversario":"",<br>
+	"cidade":"Belo Horizonte",<br>
+	```Grupo só pode ser este```<br>
+	"grupo":"Administrador"<br>
 } 
 
 10º) DER do banco de dados:
