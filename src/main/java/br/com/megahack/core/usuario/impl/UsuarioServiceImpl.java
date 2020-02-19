@@ -1,5 +1,8 @@
 package br.com.megahack.core.usuario.impl;
 
+import static br.com.megahack.Converter.imageToByte;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -17,7 +20,9 @@ import br.com.megahack.core.usuario.Usuario;
 import br.com.megahack.core.usuario.UsuarioService;
 import br.com.megahack.core.usuario.resource.UsuarioResource;
 import br.com.megahack.core.usuariogrupo.UsuarioGrupo;
+import lombok.extern.apachecommons.CommonsLog;
 
+@CommonsLog
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
@@ -32,23 +37,39 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public UsuarioResource incluir(UsuarioResource resource) {
-		String senha = passwordEncoder.encode(resource.getSenha());
-		Usuario usuario = Usuario.builder().login(resource.getLogin()).senha(senha).avatar(resource.getAvatar())
-				.sexo(resource.getSexo()).build();
+		try {
+			byte[] avatar;
+			if (resource.getAvatar() == null) {
+				if (resource.getSexo().equals("M")) {
+					avatar = imageToByte("/avatar/avatar_masculino.jfif");
+				} else {
+					avatar = imageToByte("/avatar/avatar_masculino.jfif");
+				}
+			} else {
+				avatar = resource.getAvatar();
+			}
+			String senha = passwordEncoder.encode(resource.getSenha());
+			Usuario usuario = Usuario.builder().login(resource.getLogin()).senha(senha).avatar(avatar)
+					.sexo(resource.getSexo()).build();
 
-		Cidade cidade = cidadeConsultaService.buscarPorNome(resource.getCidade());
-		Pessoa pessoa = Pessoa.builder().nome(resource.getNome()).sobreNome(resource.getSobreNome()).cidade(cidade)
-				.dataAniversario(new Date()).build();
-		pessoa.setUsuario(usuario);
-		usuario.setPessoa(pessoa);
+			Cidade cidade = cidadeConsultaService.buscarPorNome(resource.getCidade());
+			Pessoa pessoa = Pessoa.builder().nome(resource.getNome()).sobreNome(resource.getSobreNome()).cidade(cidade)
+					.dataAniversario(new Date()).build();
+			pessoa.setUsuario(usuario);
+			usuario.setPessoa(pessoa);
 
-		Grupo grupo = grupoConsultaService.buscarPorNome(resource.getGrupo());
-		Collection<UsuarioGrupo> usuariosGrupos = new ArrayList<>();
-		usuariosGrupos.add(UsuarioGrupo.builder().grupo(grupo).usuario(usuario).build());
-		usuario.setUsuariosGrupos(usuariosGrupos);
+			Grupo grupo = grupoConsultaService.buscarPorNome(resource.getGrupo());
+			Collection<UsuarioGrupo> usuariosGrupos = new ArrayList<>();
+			usuariosGrupos.add(UsuarioGrupo.builder().grupo(grupo).usuario(usuario).build());
+			usuario.setUsuariosGrupos(usuariosGrupos);
 
-		usuario = repository.save(usuario);
-		alterarResource(resource, usuario);
+			usuario = repository.save(usuario);
+			alterarResource(resource, usuario);
+
+		} catch (IOException e) {
+			log.error(e.getMessage(), e);
+		}
+
 		return resource;
 	}
 

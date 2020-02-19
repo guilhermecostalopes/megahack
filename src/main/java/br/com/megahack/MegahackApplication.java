@@ -1,8 +1,5 @@
 package br.com.megahack;
 
-import static br.com.megahack.Converter.imageToByte;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -110,27 +107,21 @@ public class MegahackApplication {
 	}
 
 	private void incluirUsuariosPessoas(UsuarioService usuarioService, UsuarioConsultaService usuarioConsultaService) {
-		try {
-			byte[] avatarMasculino = imageToByte("/avatar/avatar_masculino.jfif");
-			byte[] avatarFeminino = imageToByte("/avatar/avatar_masculino.jfif");
-			usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
-					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
+		usuarioService.incluir(UsuarioResource.builder().login("85655497042").senha("y|e8HTcAJ9").nome("Guilherme")
+				.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte").sexo("M")
+				.grupo("Administrador").build());
 
-			usuarioService.incluir(UsuarioResource.builder().login("85655497041").senha("y|e8HTcAJ9").nome("João")
-					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarMasculino).sexo("M").grupo("Administrador").build());
+		usuarioService.incluir(UsuarioResource.builder().login("85655497041").senha("y|e8HTcAJ9").nome("João")
+				.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte").sexo("M")
+				.grupo("Administrador").build());
 
-			usuarioService.incluir(UsuarioResource.builder().login("85655497043").senha("y|e8HTcAJ9").nome("Helena")
-					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());
+		usuarioService.incluir(UsuarioResource.builder().login("85655497043").senha("y|e8HTcAJ9").nome("Helena")
+				.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte").sexo("F")
+				.grupo("Administrador").build());
 
-			usuarioService.incluir(UsuarioResource.builder().login("85655497044").senha("y|e8HTcAJ9").nome("Maria")
-					.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte")
-					.avatar(avatarFeminino).sexo("F").grupo("Administrador").build());
-		} catch (IOException e) {
-			log.error(e.getMessage(), e);
-		}
+		usuarioService.incluir(UsuarioResource.builder().login("85655497044").senha("y|e8HTcAJ9").nome("Maria")
+				.sobreNome("Costa Lopes").dataAniversario("06/07/1978").cidade("Belo Horizonte").sexo("F")
+				.grupo("Administrador").build());
 	}
 
 	private void incluirRegiao(RegiaoService regiaoService) {
