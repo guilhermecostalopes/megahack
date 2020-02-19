@@ -41,7 +41,7 @@ Conforme imagem:
 
 2º) https://timemegahack.herokuapp.com/chatProgramacaoDias/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar o chat que vários usuários enviaram para um determinado programa por dia.
 
-![Imagem configuração](/img/login_token.png)
+![Imagem configuração](/img/chat.png)
 
 3º) https://timemegahack.herokuapp.com/enquetes/pesquisarPorPrograma/001/20/1/2020 , método GET, Para visualizar as enquetes de um determinado programa por dia.
 
