@@ -30,10 +30,8 @@ import br.com.megahack.core.regiao.resource.RegiaoResource;
 import br.com.megahack.core.usuario.UsuarioConsultaService;
 import br.com.megahack.core.usuario.UsuarioService;
 import br.com.megahack.core.usuario.resource.UsuarioResource;
-import lombok.extern.apachecommons.CommonsLog;
 
 @SpringBootApplication
-@CommonsLog
 public class MegahackApplication {
 
 	public static void main(String[] args) {

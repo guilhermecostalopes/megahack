@@ -58,7 +58,7 @@ public class Usuario {
 	private String senha;
 	@Column(name = "DS_SEXO", nullable = false, length = 1)
 	private String sexo;
-	@Column(name = "IM_AVATAR", nullable = false)
+	@Column(name = "IM_AVATAR")
 	private byte[] avatar;
 	// Quando salvar um usuário deve ter no minimo um grupo
 	@OneToMany(mappedBy = "usuario", targetEntity = UsuarioGrupo.class, cascade = { PERSIST, MERGE, REFRESH, DETACH })

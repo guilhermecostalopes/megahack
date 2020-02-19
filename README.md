@@ -59,7 +59,32 @@ Conforme imagem:
 
 ![Imagem configuração](/img/votar_contra.png)
 
-7º) DER do banco de dados:
+7º) https://timemegahack.herokuapp.com/usuarios/incluir , método POST, Incluindo usuário no sistema, sem erros.
+
+![Imagem configuração](/img/usuario_ok.png)
+
+8º) https://timemegahack.herokuapp.com/usuarios/incluir , método POST, Incluindo usuário no sistema, com erros. ```Lembrando que o sistema ainda não faz validações```.
+
+![Imagem configuração](/img/usuario_erro.png)
+
+9º) Para o cadastro do usuário, via postman, deve ter o objeto:
+
+{
+	"login":"",
+	"senha":"",
+	"sexo":"M"; ```(Deve ser M ou F)```
+	"avatar": "", ```Deve deixar desse jeito```
+	```Pessoa```
+	"nome":"",
+	"sobreNome":"",
+	```Deve ser DD/MM/YYYY```
+	"dataAniversario":"",
+	"cidade":"Belo Horizonte",
+	```Grupo só pode ser este```
+	"grupo":"Administrador"
+} 
+
+10º) DER do banco de dados:
 
 ![Imagem configuração](/img/banco_dados.png)
 
