@@ -70,7 +70,7 @@ Conforme imagem:
 9º) Para o cadastro do usuário, via postman, deve ter o objeto:
 
 {
-	"login":"",
+	"login":"",<br>
 	"senha":"",
 	"sexo":"M"; ```(Deve ser M ou F)```
 	"avatar": "", ```Deve deixar desse jeito```
