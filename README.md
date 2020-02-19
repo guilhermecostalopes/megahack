@@ -39,7 +39,7 @@ Conforme imagem:
 
 ![Imagem configuração](/img/login_token.png)
 
-2º) Após ter o token, devendo escrever Authorization, no key e colar o token no value, conforme imagem:
+2º) Após ter o token, devendo escrever Authorization, no ```key``` e colar o token no ```value```, conforme imagem:
 
 ![Imagem configuração](/img/token.png)
 
